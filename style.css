@@ -49,6 +49,7 @@ nav {
 nav ul {
     display: flex;
     margin-right: -80px;
+    
 
 }
 
@@ -64,6 +65,7 @@ nav ul li a {
     color: rgb(192, 219, 17);
     letter-spacing: 1px;
     transition: 0.6s ease-out;
+    
 }
 
 nav ul li a {
@@ -113,13 +115,21 @@ nav ul li a {
     margin: 0px;
     letter-spacing: 5px;
     font-weight: 500;
-    color: #e9c966;
     font-family: Arial, Helvetica, sans-serif;
+    -webkit-text-stroke: 1.11px black;
+    /* stroke width and color */
+    color: rgb(235, 202, 18);
+    /* -webkit-font-smoothing: antialiased; */
+    font-weight: bold;
+
 }
 
 .header-heading h2 {
-    color: rgba(22, 132, 20, 0.958);
+    color: rgba(154, 86, 13, 0.958);
     font-size: 40px;
+    font-weight: bold;
+    -webkit-text-stroke: 0.7px black;
+
 }
 
 .btn {
@@ -137,6 +147,11 @@ nav ul li a {
     transition: 0.6s ease-out;
     font-size: 30px;
     font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    -webkit-text-stroke: 0.7px black;
+
+
+
 }
 
 .btn:hover {
