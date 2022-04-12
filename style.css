@@ -6,7 +6,7 @@ body {
     width: 100%;
     height: 784px;
     background-position: center;
-    background-repeat: no-repeat;
+    /* background-repeat: no-repeat; */
     background-size: cover;
 }
 
@@ -64,12 +64,11 @@ nav la {
     font-weight: 500;
     letter-spacing: 1px;
     transition: 0.6s ease-out;
-    font-family: "Roboto", sans-serif    
-    
-    /* border-left: 5px solid #727ec2; */
-    /* border-right: 5px solid #727ec2;
+    font-family: "Roboto", sans-serif
+        /* border-left: 5px solid #727ec2; */
+        /* border-right: 5px solid #727ec2;
     border-bottom: 5px solid rgb(55, 98, 190); */
-    /* box-shadow: 10px 19px 50px rgba(115, 101, 194, 0.897); */
+        /* box-shadow: 10px 19px 50px rgba(115, 101, 194, 0.897); */
 }
 
 nav ul li a {
@@ -84,8 +83,48 @@ nav ul li a {
     color: rgb(73, 56, 11);
     letter-spacing: 1px;
     transition: 0.6s ease-out;
-    font-family: "Roboto", sans-serif 
+    font-family: "Roboto", sans-serif
+}
 
+min {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    z-index: 1;
+
+}
+
+navv lu {
+
+
+    display: flex;
+    margin-top: 130px;
+    margin-left: 0px;
+    /* position: fixed; */
+    /* justify-content:left; */
+    /* margin-right: -100px; */
+    width: 80%;
+    align-items: flex-end;
+    background-color: #FFFFFF;
+    /* margin-bottom: 10px; */
+    /* justify-content:left;
+    align-items:flex-end; */
+    /* position: fixed; */
+    /* z-index: 1; */
+}
+
+neh lu {
+
+
+    display: flex;
+    margin-top: 130px;
+    margin-left: 0px;
+    align-items: center;
+    /* position: fixed; */
+    /* justify-content:left; */
+    /* margin-right: -100px; */
+    /* width: -300%; */
+    background-color: #FFFFFF;
 }
 
 nav ul li a {
@@ -122,6 +161,7 @@ nav ul li a {
     background-size:cover ;
     position: relative; */
 }
+
 /* 
 .header-heading {
     width: 500px;
@@ -140,9 +180,9 @@ nav ul li a {
     font-family: Arial, Helvetica, sans-serif;
     -webkit-text-stroke: 1.11px black;
     /* stroke width and color */
-    /* color: rgb(235, 202, 18); */
-    /* -webkit-font-smoothing: antialiased; */
-    /* font-weight: bold;
+/* color: rgb(235, 202, 18); */
+/* -webkit-font-smoothing: antialiased; */
+/* font-weight: bold;
 
 } */
 
@@ -171,11 +211,11 @@ nav ul li a {
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
     -webkit-text-stroke: 0.7px black;
-} */ 
+} */
 
 /* .btn:hover {
     background-color: #fd6100;
 } */
-navv{
+navv {
     justify-content: center;
 }
