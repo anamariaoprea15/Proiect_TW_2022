@@ -87,14 +87,6 @@ tr{
 
 @media screen and (max-width: 500px) {
 
-    .form-btn:hover, .form-container .btn:hover {
-        background-color: #001e28;
-        box-shadow: none;
-    }
-
-    .form-link:hover {
-        text-decoration: underline;
-    }
 
     .info{
         font-size: 14px;
