@@ -120,7 +120,7 @@
                         <label for="type">Type</label>
                     </div>
                     <div class="right">
-                        <select id="type" name="type">
+                        <select id="type2" name="type">
                             <option value="cat">cat</option>
                             <option value="tiger">tiger</option>
                             <option value="puma">puma</option>
@@ -130,7 +130,7 @@
                     </div>
                 </div>
 
-                <div class="row" id="showCat">
+                <div class="row" id="showSize">
                     <div class="left">
                         <label for="size">Size</label>
                     </div>
@@ -143,7 +143,7 @@
                     </div>
                 </div>
 
-                <div class="row" id="showCat">
+                <div class="row" id="showBreed">
                     <div class="left">
                         <label for="breed">Breed</label>
                     </div>
@@ -186,3 +186,18 @@
     });
 
 
+    document.getElementById('type2').addEventListener('change', function () {
+        var type = this.value;
+
+        if (type == "cat") {
+            document.getElementById('showSize').style.display = "block";
+            document.getElementById('showBreed').style.display = "block";
+        }
+        else {
+            document.getElementById('showSize').style.display = "none";
+            document.getElementById('showBreed').style.display = "none";
+        }
+
+    });
+
+</script>
