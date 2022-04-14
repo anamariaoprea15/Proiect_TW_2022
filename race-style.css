@@ -118,3 +118,8 @@ td, th {
     display: none;
 
 }
+
+
+.left h3{
+    text-decoration: underline;
+}
