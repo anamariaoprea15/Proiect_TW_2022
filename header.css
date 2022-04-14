@@ -1,16 +1,19 @@
 * {
     box-sizing: border-box;
-}
-
-body {
-    margin: 0;
     font-family: Arial, Helvetica, sans-serif;
+
 }
 
 header {
     width: 100%;
+    height: 100%;
     overflow: hidden;
-    background-color: #222831;
+    height: 15%;
+    margin-bottom: 10px;
+}
+
+.header-top {
+    background-color: #001e28;
     padding: 2px 30px;
     display: flex;
     justify-content: space-between;
@@ -18,17 +21,36 @@ header {
     color: white;
 }
 
+.logo {
+    display: flex;
+    font-style: italic;
+
+}
+
+.logo img {
+    border-radius: 10px;
+    height: 50px;
+    width: auto;
+    margin-top: 5px;
+}
+
 .top-menu {
     display: flex;
     justify-content: space-evenly;
-    background-color: #393E46;
+    background-color: #001e28;
+    border-top: 0.5px solid #393E46;
 }
 
-a {
+.top-menu a {
     text-decoration: none;
     color: white;
     padding: 10px;
 }
+
+.top-menu a:hover {
+    color: #ddd;
+}
+
 
 .form-btn {
     background-color: #393E46;
@@ -40,17 +62,16 @@ a {
     font-size: 15px;
 }
 
-/* change button color when hover */
+
 .form-btn:hover {
-    background-color: #222831;
+    background-color: #001e28;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 }
 
 
-/* popup form - hidden by default */
 .form-popup {
     display: none;
-    border: 3px solid #393E46;
+    border: 5px solid #393E46;
     border-radius: 5px;
     z-index: 9;
     max-width: 300px;
@@ -61,35 +82,35 @@ a {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 50%;
-
 }
 
-/* Add styles to the form container */
+
 .form-container {
     max-width: 300px;
     padding: 10px;
     background-color: white;
     text-align: center;
+    z-index: 9;
+
 }
 
-/* Full-width input fields */
-.form-container input{
+.form-container input {
     width: 100%;
     padding: 15px;
     margin: 5px 0 22px 0;
     border: none;
     background: #f1f1f1;
     border-radius: 5px;
+
 }
 
-/* When the inputs get focus, do something */
+
 .form-container input:focus {
     background-color: #ddd;
     outline: none;
 }
 
-/* Set a style for the submit/login button */
-.form-container .btn{
+.form-container .btn {
     background-color: #393E46;
     color: white;
     padding: 16px 20px;
@@ -101,39 +122,44 @@ a {
     opacity: 0.8;
 }
 
-/* Add some hover effects to buttons */
+
 .form-container .btn:hover {
-    background-color: #222831;
+    background-color: #001e28;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 }
 
-.description{
+.description {
     margin-bottom: 15px;
     font-size: 14px;
 }
 
-#registerContainer{
+#registerContainer {
     display: none;
 }
 
-.form-link{
-    cursor:pointer;
+.form-link {
+    cursor: pointer;
     text-decoration: underline;
 }
 
-.form-link:hover{
+.form-link:hover {
     text-decoration: none;
 }
 
+
 @media screen and (max-width: 500px) {
- 
+
     .form-btn:hover, .form-container .btn:hover {
         background-color: #393E46;
         box-shadow: none;
     }
 
-    .form-link:hover{
+    .form-link:hover {
         text-decoration: underline;
     }
-  
+
+
+    .top-menu a:hover {
+        color: white;
+    }
 }

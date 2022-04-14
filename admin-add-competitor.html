@@ -1,0 +1,380 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="add-competitor.css">
+    <link rel="stylesheet" href="header.css">
+    <title>Add feline</title>
+
+</head>
+
+<body>
+
+    <header>
+        <div class="header-top">
+            <div class="logo">
+                <img src="images/logoo.png" alt="logo">
+                <h3>Cat Race</h3>
+            </div>
+
+            <button class="form-btn">
+                Admin profile</button>
+        </div>
+
+
+        <nav class="top-menu">
+            <a href="#"> Cat </a>
+            <a href="#"> Tiger </a>
+            <a href="#"> Puma </a>
+            <a href="#"> Cheetah </a>
+            <a href="#"> Jaguar </a>
+        </nav>
+    </header>
+
+
+    <main>
+        <div class="container">
+
+            <h2>Add competition</h2>
+
+            <form action="#">
+                <div class="row">
+                    <div class="left">
+                        <label for="name">Competition Name</label>
+                    </div>
+                    <div class="right">
+                        <input type="text" id="name" name="name" placeholder="Competition's name..">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="left">
+                        <label for="type">Type</label>
+                    </div>
+                    <div class="right">
+                        <select id="type" name="type">
+                            <option value="cat">cat</option>
+                            <option value="tiger">tiger</option>
+                            <option value="puma">puma</option>
+                            <option value="chetaah">cheetah</option>
+                            <option value="jaguar">jaguar</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row" id="showCat">
+                    <div class="left">
+                        <label for="size">Size</label>
+                    </div>
+                    <div class="right">
+                        <select id="size" name="size">
+                            <option value="small">small</option>
+                            <option value="medium">medium</option>
+                            <option value="large">large</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="left">
+                        <label for="sdate">Start date</label>
+                    </div>
+                    <div class="right">
+                        <input type="date" id="sdate" name="sdate" placeholder="Start date...">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="left">
+                        <label for="fdate">Finish date</label>
+                    </div>
+                    <div class="right">
+                        <input type="date" id="fdate" name="fdate" placeholder="Finish date...">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <input type="submit" value="Submit">
+                </div>
+            </form>
+        </div>
+
+
+        <div class="container">
+
+            <h2>Add feline to competition</h2>
+
+            <form action="#">
+                <div class="row">
+                    <div class="left">
+                        <label for="name">Name</label>
+                    </div>
+                    <div class="right">
+                        <input type="text" id="name" name="name" placeholder="Feline's name.." required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="left">
+                        <label for="type">Type</label>
+                    </div>
+                    <div class="right">
+                        <select id="type" name="type">
+                            <option value="cat">cat</option>
+                            <option value="tiger">tiger</option>
+                            <option value="puma">puma</option>
+                            <option value="chetaah">cheetah</option>
+                            <option value="jaguar">jaguar</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row" id="showCat">
+                    <div class="left">
+                        <label for="size">Size</label>
+                    </div>
+                    <div class="right">
+                        <select id="size" name="size">
+                            <option value="small">small</option>
+                            <option value="medium">medium</option>
+                            <option value="large">large</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row" id="showCat">
+                    <div class="left">
+                        <label for="breed">Breed</label>
+                    </div>
+                    <div class="right">
+                        <input type="text" id="breed" name="breed" placeholder="Feline's breed...">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="left">
+                        <label for="size">Competiton name</label>
+                    </div>
+                    <div class="right">
+                        <input type="text" id="breed" name="breed" placeholder="Competition..." required>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <input type="submit" value="Submit">
+                </div>
+            </form>
+        </div>
+    </main>
+</body>
+
+
+
+</html>
+
+<script>
+
+    document.getElementById('type').addEventListener('change', function () {
+        var type = this.value;
+
+        if (type == "cat") {
+            document.getElementById('showCat').style.display = "block";
+        }
+        else { document.getElementById('showCat').style.display = "none"; }
+
+    });
+
+
+=======
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="add-competitor.css">
+    <link rel="stylesheet" href="header.css">
+    <title>Add feline</title>
+
+</head>
+
+<body>
+
+    <header>
+        <div class="header-top">
+            <div class="logo">
+                <img src="images/logoo.png" alt="logo">
+                <h3>Cat Race</h3>
+            </div>
+
+            <button class="form-btn">
+                Admin profile</button>
+        </div>
+
+
+        <nav class="top-menu">
+            <a href="#"> Cat </a>
+            <a href="#"> Tiger </a>
+            <a href="#"> Puma </a>
+            <a href="#"> Cheetah </a>
+            <a href="#"> Jaguar </a>
+        </nav>
+    </header>
+
+
+    <main>
+        <div class="container">
+
+            <h2>Add competition</h2>
+
+            <form action="#">
+                <div class="row">
+                    <div class="left">
+                        <label for="name">Competition Name</label>
+                    </div>
+                    <div class="right">
+                        <input type="text" id="name" name="name" placeholder="Competition's name..">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="left">
+                        <label for="type">Type</label>
+                    </div>
+                    <div class="right">
+                        <select id="type" name="type">
+                            <option value="cat">cat</option>
+                            <option value="tiger">tiger</option>
+                            <option value="puma">puma</option>
+                            <option value="chetaah">cheetah</option>
+                            <option value="jaguar">jaguar</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row" id="showCat">
+                    <div class="left">
+                        <label for="size">Size</label>
+                    </div>
+                    <div class="right">
+                        <select id="size" name="size">
+                            <option value="small">small</option>
+                            <option value="medium">medium</option>
+                            <option value="large">large</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="left">
+                        <label for="sdate">Start date</label>
+                    </div>
+                    <div class="right">
+                        <input type="date" id="sdate" name="sdate" placeholder="Start date...">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="left">
+                        <label for="fdate">Finish date</label>
+                    </div>
+                    <div class="right">
+                        <input type="date" id="fdate" name="fdate" placeholder="Finish date...">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <input type="submit" value="Submit">
+                </div>
+            </form>
+        </div>
+
+
+        <div class="container">
+
+            <h2>Add feline to competition</h2>
+
+            <form action="#">
+                <div class="row">
+                    <div class="left">
+                        <label for="name">Name</label>
+                    </div>
+                    <div class="right">
+                        <input type="text" id="name" name="name" placeholder="Feline's name.." required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="left">
+                        <label for="type">Type</label>
+                    </div>
+                    <div class="right">
+                        <select id="type" name="type">
+                            <option value="cat">cat</option>
+                            <option value="tiger">tiger</option>
+                            <option value="puma">puma</option>
+                            <option value="chetaah">cheetah</option>
+                            <option value="jaguar">jaguar</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row" id="showCat">
+                    <div class="left">
+                        <label for="size">Size</label>
+                    </div>
+                    <div class="right">
+                        <select id="size" name="size">
+                            <option value="small">small</option>
+                            <option value="medium">medium</option>
+                            <option value="large">large</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row" id="showCat">
+                    <div class="left">
+                        <label for="breed">Breed</label>
+                    </div>
+                    <div class="right">
+                        <input type="text" id="breed" name="breed" placeholder="Feline's breed...">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="left">
+                        <label for="size">Competiton name</label>
+                    </div>
+                    <div class="right">
+                        <input type="text" id="breed" name="breed" placeholder="Competition..." required>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <input type="submit" value="Submit">
+                </div>
+            </form>
+        </div>
+    </main>
+</body>
+
+
+
+</html>
+
+<script>
+
+    document.getElementById('type').addEventListener('change', function () {
+        var type = this.value;
+
+        if (type == "cat") {
+            document.getElementById('showCat').style.display = "block";
+        }
+        else { document.getElementById('showCat').style.display = "none"; }
+
+    });
+
+
+>>>>>>> 0fb89f482bfcf6b5d030295be477fdb5e2b8fda6
+</script>

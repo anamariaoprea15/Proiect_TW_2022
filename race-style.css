@@ -1,0 +1,125 @@
+body {
+    margin: 0;
+    background-color: #dddddd;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+   
+}
+
+td, th {
+    text-align: center;
+    padding: 8px;
+    color: #001e28;
+    background-color: white;
+}
+
+tr{
+    border-bottom: 1px solid #001e28;
+}
+
+
+
+main {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    width: 95%;
+}
+
+.left {
+    background-color: #001e28;
+    flex: 1;
+    margin-right: 10px;
+    padding: 10px;
+    border-radius: 5px;
+
+}
+
+.right {
+    flex: 3;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    line-height: 2;
+
+}
+
+a:hover {
+    color: #dddddd;
+}
+
+.left h3 {
+    color: white;
+}
+
+.odds-btn {
+    background-color: #393E46;
+    border: 2px solid #393E46;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.odds-btn:hover {
+    background-color: #001e28;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+td, th {
+    text-align: center;
+}
+
+.bet-popup {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    right: 15px;
+    z-index: 9;
+}
+
+.bet-container {
+    max-width: 300px;
+    padding: 10px;
+    background-color: #001e28;
+    color:white;
+    border-radius: 5px;
+    border: 5px solid #393E46;
+}
+
+.bet-container input {
+    width: 30%;
+    padding: 10px;
+    margin: 5px 0 10px 0;
+    border: none;
+    background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.bet-container input:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+.must-login{
+    display: none;
+
+}
+
+
+.left h3{
+    text-decoration: underline;
+}
