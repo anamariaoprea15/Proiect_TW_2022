@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 * {
     box-sizing: border-box;
 }
@@ -84,4 +85,92 @@ main {
         width: 100%;
         margin-top: 0;
     }
+=======
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+input[type=text], select, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical;
+}
+
+input[type=date] {
+    width: 50%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+label {
+    padding: 10px;
+    display: inline-block;
+}
+
+input[type=submit] {
+    margin-top: 10px;
+    background-color: #001e28;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    float: right;
+}
+
+input[type=submit]:hover {
+    background-color: #33464d;
+}
+
+.container {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    margin: 10px;
+    width: 80%;
+
+}
+
+main {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.left {
+    float: left;
+    width: 25%;
+    margin-top: 6px;
+}
+
+.right {
+    float: left;
+    width: 75%;
+    margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+#schowCat {
+    display: none;
+}
+
+@media screen and (max-width: 500px) {
+    .left, .right, input[type=submit] {
+        width: 100%;
+        margin-top: 0;
+    }
+>>>>>>> 0fb89f482bfcf6b5d030295be477fdb5e2b8fda6
 }
