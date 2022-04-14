@@ -44,7 +44,7 @@ main {
     margin-right: 10px;
     padding: 10px;
     border-radius: 5px;
-    max-height: 400px;
+    height: 400px;
 }
 
 .right {
