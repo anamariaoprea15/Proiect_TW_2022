@@ -29,13 +29,12 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
 .container {
     display: flex;
     justify-content: center;
-    width: 95%;
+    width: 70%;
 }
 
 .left {
@@ -123,4 +122,10 @@ td, th {
 
 .left h3{
     text-decoration: underline;
+}
+
+@media screen and (max-width: 500px){
+    .container{
+        width: 95%;
+    }
 }
