@@ -82,7 +82,7 @@
                         <label for="sdate">Start date</label>
                     </div>
                     <div class="right">
-                        <input type="date" id="sdate" name="sdate" placeholder="Start date...">
+                        <input type="date" id="sdate" name="sdate">
                     </div>
                 </div>
 
@@ -91,7 +91,7 @@
                         <label for="fdate">Finish date</label>
                     </div>
                     <div class="right">
-                        <input type="date" id="fdate" name="fdate" placeholder="Finish date...">
+                        <input type="date" id="fdate" name="fdate">
                     </div>
                 </div>
 
@@ -109,10 +109,10 @@
             <form action="#">
                 <div class="row">
                     <div class="left">
-                        <label for="name">Name</label>
+                        <label for="name2">Name</label>
                     </div>
                     <div class="right">
-                        <input type="text" id="name" name="name" placeholder="Feline's name.." required>
+                        <input type="text" id="name2" name="name2" placeholder="Feline's name.." required>
                     </div>
                 </div>
                 <div class="row">
@@ -132,10 +132,10 @@
 
                 <div class="row" id="showSize">
                     <div class="left">
-                        <label for="size">Size</label>
+                        <label for="size2">Size</label>
                     </div>
                     <div class="right">
-                        <select id="size" name="size">
+                        <select id="size2" name="size2">
                             <option value="small">small</option>
                             <option value="medium">medium</option>
                             <option value="large">large</option>
@@ -154,10 +154,10 @@
 
                 <div class="row">
                     <div class="left">
-                        <label for="size">Competiton name</label>
+                        <label for="comp-name">Competiton name</label>
                     </div>
                     <div class="right">
-                        <input type="text" id="breed" name="breed" placeholder="Competition..." required>
+                        <input type="text" id="comp-name" name="comp-name" placeholder="Competition..." required>
                     </div>
                 </div>
 
@@ -167,37 +167,38 @@
             </form>
         </div>
     </main>
+
+
+    <script>
+
+        document.getElementById('type').addEventListener('change', function () {
+            var type = this.value;
+
+            if (type == "cat") {
+                document.getElementById('showCat').style.display = "block";
+            }
+            else { document.getElementById('showCat').style.display = "none"; }
+
+        });
+
+
+        document.getElementById('type2').addEventListener('change', function () {
+            var type = this.value;
+
+            if (type == "cat") {
+                document.getElementById('showSize').style.display = "block";
+                document.getElementById('showBreed').style.display = "block";
+            }
+            else {
+                document.getElementById('showSize').style.display = "none";
+                document.getElementById('showBreed').style.display = "none";
+            }
+
+        });
+
+    </script>
 </body>
 
 
 
 </html>
-
-<script>
-
-    document.getElementById('type').addEventListener('change', function () {
-        var type = this.value;
-
-        if (type == "cat") {
-            document.getElementById('showCat').style.display = "block";
-        }
-        else { document.getElementById('showCat').style.display = "none"; }
-
-    });
-
-
-    document.getElementById('type2').addEventListener('change', function () {
-        var type = this.value;
-
-        if (type == "cat") {
-            document.getElementById('showSize').style.display = "block";
-            document.getElementById('showBreed').style.display = "block";
-        }
-        else {
-            document.getElementById('showSize').style.display = "none";
-            document.getElementById('showBreed').style.display = "none";
-        }
-
-    });
-
-</script>
