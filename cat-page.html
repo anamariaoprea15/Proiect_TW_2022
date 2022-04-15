@@ -8,6 +8,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="cat-page-style.css">
     <link rel="stylesheet" href="header.css">
+
 </head>
 
 <body>
@@ -58,14 +59,14 @@
             <h2>Sign Up</h2>
 
             <label for="email"><b>Email</b></label>
-            <input type="email" name="email" placeholder="Enter your email" required>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
 
 
             <label for="username"><b>Username</b></label>
-            <input type="text" name="username" placeholder="Enter your username" required>
+            <input type="text" id="username" name="username" placeholder="Enter your username" required>
 
             <label for="password"><b>Password</b></label>
-            <input type="password" name="password" placeholder="Enter your password" required>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
             <div class="description">
                 Already have an account?
                 <span class="form-link" onclick="goLogin()">Log in now!</span>
@@ -123,7 +124,9 @@
             </div>
         </div>
     </main>
+
+
+    <script src="form-script.js"> </script>
 </body>
 
 </html>
-<script src="form-script.js"> </script>
