@@ -1,5 +1,6 @@
 .left {
   height: 600px;
+  margin-left: -100px;
   text-align: center;
   flex: 1;
 }
@@ -21,11 +22,12 @@
 
 .right {
   flex: 5;
+  margin-right: -100px;
 }
 
 .sidenav {
   height: 100%;
-  width: 100%;
+  width: 260px;
   z-index: 1;
   top: 0;
   left: 0px;
@@ -61,14 +63,21 @@
   padding: 0px 10px;
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 500px) {
   .sidenav {
     padding-top: 15px;
+    width: 100px;
   }
   .form-btn1{
     margin-top: 10px;
     border-radius: 0;
     font-size: 18px;
+  }
+  .left{
+    margin-left: 0px;
+  }
+  .right{
+    margin-right: 0px;
   }
 
   .sidenav a {
