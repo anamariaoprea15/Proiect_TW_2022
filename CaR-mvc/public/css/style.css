@@ -1,0 +1,39 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-image: url("../images/running-cat.gif");
+    height: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #393E46;
+    color: white;
+    text-align: center;
+    padding-bottom: 10px;
+  }
+
+a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+   
+}
+
+footer a:hover{
+    text-decoration: underline;
+}
+
+@media screen and (max-width: 500px) {
+    footer a:hover{
+        text-decoration: none;
+    }   
+}

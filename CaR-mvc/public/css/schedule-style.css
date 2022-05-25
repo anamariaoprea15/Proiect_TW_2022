@@ -1,0 +1,38 @@
+.right {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.right .btn {
+    background-color: #393E46;
+    border: 2px solid #393E46;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px;
+    width: 50%;
+    align-self: center;
+    margin: 10px;
+}
+
+.right .btn:hover {
+    background-color: #001e28;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+.left h3{
+    text-decoration: underline;
+}
+
+@media screen and (max-width: 500px) {
+
+    .right .btn:hover {
+        background-color: #393E46;
+        box-shadow: none;
+    }
+    
+    a:hover{
+        color:white;
+    }
+}
