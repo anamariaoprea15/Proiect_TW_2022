@@ -47,9 +47,7 @@ class Race extends Controller
     public function schedule(){
 
         $user = getLoggedInUser();
-
         $this->view('race/schedule', ["user" => $user]);
-
     }
 
     public function changePassword(){
@@ -62,6 +60,42 @@ class Race extends Controller
     }
 
 
+    public function login() 
+    {
+    
+        //nu sunt setate din formular   
+        if (!isset($_POST["username"]) || !isset($_POST["password"])) {
+            $this->view('errors/bad-request', []);
+            return;
+        }
+
+        $username = $_POST["username"];
+        $password = md5($_POST["password"]);
+
+        $user = getUser($username, $password);
+
+        if(!$user) {
+            // echo "Missing account!";
+           // $this -> view('errors/wrong-credentials', []);
+        } else {
+            //login din auth-utils
+            //retine user si parola in sesiune
+            login($username, $password);
+          
+            //schimba path-ul (controller)
+            header("Location: ../race/live_races");
+        }
+    }
+
+    public function register()
+    {
+        $username = $_POST["username"];
+        $email = $_POST["email"];
+        $password = md5($_POST["password"]);
+        addUser($username, $email, $password);
+        //cu mesaj a fost inregistrat cu succes !! sau verificari daca exista deja userul
+        header("Location: ../race/live_races");
+    }
 
 
 }

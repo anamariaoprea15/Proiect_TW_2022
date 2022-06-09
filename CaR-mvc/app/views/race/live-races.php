@@ -20,17 +20,27 @@
                 <h3>Cat Race</h3>
             </div>
 
-            <button class="form-btn" onclick="openForm()">
-                Login</button>
+            <?php if ($data["user"] == null) { ?>
+                <button class="form-btn" onclick="openForm()">
+                    Login</button>
+            <?php } else if($data["user"]->username != null) { ?>
+                <div>
+                    <a href="../profile/index" class="form-btn">Profile</a>
+                    <a href="../profile/logout" class="form-btn">Logout</a>
+                </div>
+               
+            <?php }  ?>
+
+
         </div>
 
 
         <nav class="top-menu">
-            <a href="race.html"> Cat </a>
-            <a href="race.html"> Tiger </a>
-            <a href="race.html"> Puma </a>
-            <a href="race.html"> Cheetah </a>
-            <a href="race.html"> Jaguar </a>
+            <a href="../race/index"> Cat </a>
+            <a href="../race/index"> Tiger </a>
+            <a href="../race/index"> Puma </a>
+            <a href="../race/index"> Cheetah </a>
+            <a href="../race/index"> Jaguar </a>
         </nav>
     </header>
 
@@ -45,8 +55,8 @@
                 </div>
                 <div class="schedule">
                     <h3>Schedule </h3>
-                    <a href="schedule.html">Schedule</a> <br>
-                    <a href="">Races</a> <br>
+                    <a href="../race/schedule">Schedule</a> <br>
+                    <a href="../race/live_races">Races</a> <br>
 
                 </div>
             </div>
@@ -234,7 +244,7 @@
     </main>
 
     <div class="bet-popup" id="bettingForm">
-        <form action="#" class="bet-container">
+        <form method="POST" action="#" class="bet-container">
             <h3>Place bet</h3>
             <label for="betting-sum">Bet sum</label>
             <input type="number" id="betting-sum" name="betting-sum" min="1" required>
@@ -264,7 +274,7 @@
 
 
     <div class="form-popup" id="formPopup">
-        <form action="#" class="form-container" id="loginContainer">
+        <form method="POST" action="../race/login" class="form-container" id="loginContainer">
             <h2>Login</h2>
 
             <label for="username"><b>Username</b></label>
@@ -284,7 +294,7 @@
             <button type="button" class="btn" onclick="closeForm()">Close</button>
         </form>
 
-        <form action="#" class="form-container" id="registerContainer">
+        <form method="POST" action="../race/register" class="form-container" id="registerContainer">
             <h2>Sign Up</h2>
 
             <label for="email"><b>Email</b></label>
@@ -338,7 +348,7 @@
         var i;
 
         for (i = 0; i < coll.length; i++) {
-            coll[i].addEventListener("click", function () {
+            coll[i].addEventListener("click", function() {
                 this.classList.toggle("active");
                 var content = this.nextElementSibling;
                 if (content.style.display === "block") {

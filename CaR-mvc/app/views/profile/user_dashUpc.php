@@ -21,7 +21,7 @@
                 <h3>Cat Race</h3>
             </div>
             <div>
-                <a href="" class="form-btn">Profile</a>
+                <a href="../profile/index" class="form-btn">Profile</a>
                 <a href="../profile/logout" class="form-btn">Logout</a>
             </div>
            

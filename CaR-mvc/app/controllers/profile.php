@@ -86,10 +86,14 @@ class Profile extends Controller
 
     public function add_feline(){
 
-        echo "were hereeeeeeee";
         $name = $_POST["name2"];
         $type = $_POST["type2"];
-        $size = $_POST["size2"];
+
+        if(isset($_POST['size2'])){
+            $size = $_POST["size2"];
+        }
+        else $size = null;
+      
         if(isset($_POST['breed'])){
             $breed = $_POST["breed"];
         }
@@ -97,6 +101,6 @@ class Profile extends Controller
         $comp_name =  $_POST["comp-name"];
 
         addFeline($name, $type, $size, $breed, $comp_name);        
-       // header("Location: ../profile/index");
+        header("Location: ../profile/index");
     }
 }

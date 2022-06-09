@@ -27,11 +27,11 @@
 
 
         <nav class="top-menu">
-            <a href="race.html"> Cat </a>
-            <a href="race.html"> Tiger </a>
-            <a href="race.html"> Puma </a>
-            <a href="race.html"> Cheetah </a>
-            <a href="race.html"> Jaguar </a>
+            <a href="../race/index"> Cat </a>
+            <a href="../race/index"> Tiger </a>
+            <a href="../race/index"> Puma </a>
+            <a href="../race/index"> Cheetah </a>
+            <a href="../race/index"> Jaguar </a>
         </nav>
     </header>
 
@@ -40,14 +40,14 @@
             <div class="left">
                 <div class="categories">
                     <h3>Categories </h3>
-                    <a href="race.html">Small sized cats</a> <br>
-                    <a href="race.html">Medium sized cats</a> <br>
-                    <a href="race.html">Large cats</a> <br>
+                    <a href="../race/index">Small sized cats</a> <br>
+                    <a href="../race/index">Medium sized cats</a> <br>
+                    <a href="../race/index">Large cats</a> <br>
                 </div>
                 <div class="schedule">
                     <h3>Schedule </h3>
-                    <a href="schedule.html">Schedule</a> <br>
-                    <a href="live-races.html">Races</a> <br>
+                    <a href="../race/schedule">Schedule</a> <br>
+                    <a href="../race/live_races">Races</a> <br>
 
                 </div>
             </div>

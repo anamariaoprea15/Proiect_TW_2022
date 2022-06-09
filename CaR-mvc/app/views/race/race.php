@@ -26,11 +26,11 @@
 
 
         <nav class="top-menu">
-            <a href="race.html"> Cat </a>
-            <a href="race.html"> Tiger </a>
-            <a href="race.html"> Puma </a>
-            <a href="race.html"> Cheetah </a>
-            <a href="race.html"> Jaguar </a>
+            <a href="../race/index"> Cat </a>
+            <a href="../race/index"> Tiger </a>
+            <a href="../race/index"> Puma </a>
+            <a href="../race/index"> Cheetah </a>
+            <a href="../race/index"> Jaguar </a>
         </nav>
     </header>
 
@@ -45,8 +45,8 @@
                 </div>
                 <div class="schedule">
                     <h3>Schedule </h3>
-                    <a href="schedule.html">Schedule</a> <br>
-                    <a href="live-races.html">Races</a> <br>
+                    <a href="../race/schedule">Schedule</a> <br>
+                    <a href="../race/live_races">Races</a> <br>
 
                 </div>
             </div>
@@ -60,19 +60,19 @@
                     <tr>
                         <td>Felina 1</td>
                         <td>sfinx</td>
-                        <td><button class="odds-btn" onclick="placeBet()">
+                        <td><button class="odds-btn" onclick="loginForBet()">
                                 2.0</button></td>
                     </tr>
                     <tr>
                         <td>Felina 2</td>
                         <td>siameza</td>
-                        <td><button class="odds-btn" onclick="placeBet()">
+                        <td><button class="odds-btn" onclick="loginForBet()">
                                 2.75</button></td>
                     </tr>
                     <tr>
                         <td>Felina 3</td>
                         <td>british shorthair</td>
-                        <td><button class="odds-btn" onclick="placeBet()">
+                        <td><button class="odds-btn" onclick="loginForBet()">
                                 21.0</button></td>
                     </tr>
 
@@ -113,7 +113,7 @@
 
 
     <div class="form-popup" id="formPopup">
-        <form action="#" class="form-container" id="loginContainer">
+        <form method="POST" action="../race/login" class="form-container" id="loginContainer">
             <h2>Login</h2>
 
             <label for="username"><b>Username</b></label>
@@ -133,7 +133,7 @@
             <button type="button" class="btn" onclick="closeForm()">Close</button>
         </form>
 
-        <form action="#" class="form-container" id="registerContainer">
+        <form method="POST" action="../race/register" class="form-container" id="registerContainer">
             <h2>Sign Up</h2>
 
             <label for="email"><b>Email</b></label>

@@ -19,10 +19,17 @@
                 <img src="../images/logo.png" alt="logo">
                 <h3>Cat Race</h3>
             </div>
-            <div>
-                <a href="../profile/index" class="form-btn">Profile</a>
-                <a href="../profile/logout" class="form-btn">Logout</a>
-            </div>
+           
+            <?php if ($data["user"] == null) { ?>
+                <button class="form-btn" onclick="openForm()">
+                    Login</button>
+            <?php } else if($data["user"]->username != null) { ?>
+                <div>
+                    <a href="../profile/index" class="form-btn">Profile</a>
+                    <a href="../profile/logout" class="form-btn">Logout</a>
+                </div>
+               
+            <?php }  ?>
 
         </div>
         <nav class="top-menu">
@@ -45,8 +52,8 @@
                 </div>
                 <div class="schedule">
                     <h3>Schedule </h3>
-                    <a href="schedule.html">Schedule</a> <br>
-                    <a href="live-races.html">Races</a> <br>
+                    <a href="../race/schedule">Schedule</a> <br>
+                    <a href="../race/live_races">Races</a> <br>
 
                 </div>
             </div>
@@ -65,6 +72,54 @@
     </main>
 
 
+    <div class="form-popup" id="formPopup">
+        <form method="POST" action="../race/login" class="form-container" id="loginContainer">
+            <h2>Login</h2>
+
+            <label for="username"><b>Username</b></label>
+            <input type="text" id="username" name="username" placeholder="Enter your username" required>
+
+            <label for="password"><b>Password</b></label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            <div class="description">
+                Don't have an account?
+                <span class="form-link" onclick="goRegister()">Register now!</span>
+            </div>
+
+
+            <button type="submit" class="btn">Login</button>
+
+
+            <button type="button" class="btn" onclick="closeForm()">Close</button>
+        </form>
+
+        <form method="POST" action="../race/register" class="form-container" id="registerContainer">
+            <h2>Sign Up</h2>
+
+            <label for="email"><b>Email</b></label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+
+            <label for="username"><b>Username</b></label>
+            <input type="text" name="username" placeholder="Enter your username" required>
+
+            <label for="password"><b>Password</b></label>
+            <input type="password" name="password" placeholder="Enter your password" required>
+            <div class="description">
+                Already have an account?
+                <span class="form-link" onclick="goLogin()">Log in now!</span>
+            </div>
+
+
+            <button type="submit" class="btn">Sign Up</button>
+
+
+            <button type="button" class="btn" onclick="closeForm()">Close</button>
+        </form>
+    </div>
+
+
+    <script src="../js/form-script.js"> </script>
 </body>
 
 </html>

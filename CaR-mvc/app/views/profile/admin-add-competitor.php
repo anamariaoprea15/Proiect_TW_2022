@@ -182,7 +182,9 @@
             if (type == "cat") {
                 document.getElementById('showCat').style.display = "block";
             }
-            else { document.getElementById('showCat').style.display = "none"; }
+            else { document.getElementById('showCat').style.display = "none";
+                   document.getElementById('size').value = null;
+            }
 
         });
 
@@ -197,6 +199,8 @@
             else {
                 document.getElementById('showSize').style.display = "none";
                 document.getElementById('showBreed').style.display = "none";
+                document.getElementById("size2").value = null;
+                document.getElementById("breed").value = null;
             }
 
         });

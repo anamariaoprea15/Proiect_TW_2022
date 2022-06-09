@@ -21,19 +21,19 @@
                 <h3>Cat Race</h3>
             </div>
             <div>
-                <a href="/user_dashUpc" class="form-btn">Profile</a>
-                <a href="race.html" class="form-btn">Logout</a>
-            </div>
+                <a href="../profile/index" class="form-btn">Profile</a>
+                <a href="../profile/logout" class="form-btn">Logout</a>
+            </div>            
             
         </div>
 
 
         <nav class="top-menu">
-            <a href="race.html"> Cat </a>
-            <a href="race.html"> Tiger </a>
-            <a href="race.html"> Puma </a>
-            <a href="race.html"> Cheetah </a>
-            <a href="race.html"> Jaguar </a>
+            <a href="../race/index"> Cat </a>
+            <a href="../race/index"> Tiger </a>
+            <a href="../race/index"> Puma </a>
+            <a href="../race/index"> Cheetah </a>
+            <a href="../race/index"> Jaguar </a>
         </nav>
     </header>
 
@@ -120,7 +120,7 @@
     </main>
 
     <div class="form-popup" id="formPopup">
-        <form action="#" class="form-container" id="loginContainer">
+        <form method="POST" action="../profile/changePassword" class="form-container" id="loginContainer">
             <h2>Change Password</h2>
 
             <label for="old_password"><b>Old Password</b></label>
