@@ -31,11 +31,11 @@
 
 
         <nav class="top-menu">
-            <a href="race.html"> Cat </a>
-            <a href="race.html"> Tiger </a>
-            <a href="race.html"> Puma </a>
-            <a href="race.html"> Cheetah </a>
-            <a href="race.html"> Jaguar </a>
+            <a href="../race/index"> Cat </a>
+            <a href="../race/index"> Tiger </a>
+            <a href="../race/index"> Puma </a>
+            <a href="../race/index"> Cheetah </a>
+            <a href="../race/index"> Jaguar </a>
         </nav>
     </header>
 
@@ -45,13 +45,13 @@
 
             <h2>Add competition</h2>
 
-            <form method="POST" action="../profile/admin-add-competitor">
+            <form method="POST" action="../profile/add_competition">
                 <div class="row">
                     <div class="left">
                         <label for="name">Competition Name</label>
                     </div>
                     <div class="right">
-                        <input type="text" id="name" name="name" placeholder="Competition's name..">
+                        <input type="text" id="name" name="name" placeholder="Competition's name.." required>
                     </div>
                 </div>
                 <div class="row">
@@ -87,7 +87,7 @@
                         <label for="sdate">Start date</label>
                     </div>
                     <div class="right">
-                        <input type="date" id="sdate" name="sdate">
+                        <input type="date" id="sdate" name="sdate" required>
                     </div>
                 </div>
 
@@ -96,7 +96,7 @@
                         <label for="fdate">Finish date</label>
                     </div>
                     <div class="right">
-                        <input type="date" id="fdate" name="fdate">
+                        <input type="date" id="fdate" name="fdate" required>
                     </div>
                 </div>
 
@@ -111,7 +111,7 @@
 
             <h2>Add feline to competition</h2>
 
-            <form method="POST" action="../profile/admin-add-competitor">
+            <form method="POST" action="../profile/add_feline">
                 <div class="row">
                     <div class="left">
                         <label for="name2">Name</label>
@@ -122,10 +122,10 @@
                 </div>
                 <div class="row">
                     <div class="left">
-                        <label for="type">Type</label>
+                        <label for="type2">Type</label>
                     </div>
                     <div class="right">
-                        <select id="type2" name="type">
+                        <select id="type2" name="type2">
                             <option value="cat">cat</option>
                             <option value="tiger">tiger</option>
                             <option value="puma">puma</option>

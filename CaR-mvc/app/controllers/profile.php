@@ -1,5 +1,6 @@
 <?php
 include_once "../app/models/auth.utils.php";
+include_once "../app/models/race.utils.php";
 
 class Profile extends Controller
 {
@@ -57,7 +58,6 @@ class Profile extends Controller
        
     }
 
-
     public function changePassword(){
 
         $user = getLoggedInUser();
@@ -68,6 +68,35 @@ class Profile extends Controller
     }
 
 
+    public function add_competition()
+    {
+        $name = $_POST["name"];
+        $type = $_POST["type"];
+        if(isset($_POST['size'])){
+            $size = $_POST["size"];
+        }
+        else $size = null;
+        $start = $_POST["sdate"];
+        $finish = $_POST["fdate"];
+        addCompetition($name, $type, $size, $start, $finish);
+        //cu mesaj a fost inregistrat cu succes !! sau verificari daca exista deja userul
+        header("Location: ../profile/index");
+    }
 
 
+    public function add_feline(){
+
+        echo "were hereeeeeeee";
+        $name = $_POST["name2"];
+        $type = $_POST["type2"];
+        $size = $_POST["size2"];
+        if(isset($_POST['breed'])){
+            $breed = $_POST["breed"];
+        }
+        else $breed = null;
+        $comp_name =  $_POST["comp-name"];
+
+        addFeline($name, $type, $size, $breed, $comp_name);        
+       // header("Location: ../profile/index");
+    }
 }
