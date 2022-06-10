@@ -23,12 +23,12 @@
             <?php if ($data["user"] == null) { ?>
                 <button class="form-btn" onclick="openForm()">
                     Login</button>
-            <?php } else if($data["user"]->username != null) { ?>
+            <?php } else if ($data["user"]->username != null) { ?>
                 <div>
                     <a href="../profile/index" class="form-btn">Profile</a>
                     <a href="../profile/logout" class="form-btn">Logout</a>
                 </div>
-               
+
             <?php }  ?>
 
 
@@ -65,7 +65,16 @@
                 <button type="button" class="collapsible">See ongoing races</button>
 
                 <div class="content">
-                    <p>Pisica - talie medie - data - ora </p>
+
+
+                    <?php
+                    $current_races = $data["current_races"];
+                    if ($current_races != null) {
+                        foreach ($current_races as $race) {
+                            echo "<p>" . $race->name . " - " . $race->type . " - " . $race->size . " </p>";
+                            echo "<p>  [" . $race->start . "] -  [" . $race->finish . "] </p>";
+
+                    ?>
                     <table>
                         <tr>
                             <th>Feline name</th>
@@ -73,60 +82,44 @@
                             <th>Betting Odds</th>
                         </tr>
                         <tr>
-                            <td>Felina 1</td>
-                            <td>sfinx</td>
-                            <td><button class="odds-btn" onclick="placeBet()">
-                                    2.0</button></td>
-                        </tr>
-                        <tr>
-                            <td>Felina 2</td>
-                            <td>siameza</td>
-                            <td><button class="odds-btn" onclick="placeBet()">
-                                    2.75</button></td>
-                        </tr>
-                        <tr>
-                            <td>Felina 3</td>
-                            <td>british shorthair</td>
-                            <td><button class="odds-btn" onclick="placeBet()">
-                                    21.0</button></td>
-                        </tr>
-
+                    <?php
+                            $felines = $data["felines"];
+                            if ($felines != null) {
+                                foreach ($felines as $feline){
+                                    if($feline->comp_name == $race->name){
+                                        // echo "SUNT AICI";
+                                        // is in this competition ?>
+                                     <tr>
+                                        <td> <?php echo $feline->name ?> </td>
+                                        <td> <?php echo $feline->breed ?> </td>
+                                        <td><button class="odds-btn" onclick="placeBet()">
+                                                2.0</button></td>
+                                    </tr>
+                      
+                    <?php
+                                    }
+                                }
+                            } 
+                    ?>
                     </table>
-
-                    <p>Tigru - data - ora </p>
-                    <table>
-                        <tr>
-                            <th>Feline name</th>
-                            <th>Breed</th>
-                            <th>Betting Odds</th>
-                        </tr>
-                        <tr>
-                            <td>Tiger 1</td>
-                            <td>tiger</td>
-                            <td><button class="odds-btn" onclick="placeBet()">
-                                    2.0</button></td>
-                        </tr>
-                        <tr>
-                            <td>Tiger 2</td>
-                            <td>tiger</td>
-                            <td><button class="odds-btn" onclick="placeBet()">
-                                    2.75</button></td>
-                        </tr>
-                        <tr>
-                            <td>Tiger 3</td>
-                            <td>tiger</td>
-                            <td><button class="odds-btn" onclick="placeBet()">
-                                    17.5</button></td>
-                        </tr>
-
-                    </table>
+                    <?php
+                        }
+                    } ?>
+                    
                 </div>
 
 
                 <button type="button" class="collapsible">See past races</button>
 
-                <div class="content">
-                    <p>Felina - data - ora </p>
+                 <div class="content">
+                    <?php
+                    $past_races = $data["past_races"];
+                    if ($past_races != null) {
+                        foreach ($past_races as $race) {
+                            echo "<p>" . $race->name . " - " . $race->type . " - " . $race->size . " </p>";
+                            echo "<p>  [" . $race->start . "] -  [" . $race->finish . "] </p>";
+
+                    ?>
                     <table>
                         <tr>
                             <th>Place</th>
@@ -134,110 +127,76 @@
                             <th>Breed</th>
                         </tr>
                         <tr>
-                            <td>1</td>
-                            <td>Felina 1</td>
-                            <td>sfinx</td>
-
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Felina 2</td>
-                            <td>siameza</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Felina 3</td>
-                            <td>british shorthair</td>
-                        </tr>
-
+                    <?php
+                            $felines = $data["felines"];
+                            if ($felines != null) {
+                                foreach ($felines as $feline){
+                                    if($feline->comp_name == $race->name){
+                                        // echo "SUNT AICI";
+                                        // is in this competition ?>
+                                     <tr>
+                                        <td> <?php echo $feline->rank ?> </td> 
+                                        <td> <?php echo $feline->name ?> </td>
+                                        <td> <?php echo $feline->breed ?> </td>
+                                    </tr>
+                      
+                    <?php
+                                    }
+                                }
+                            } 
+                    ?>
                     </table>
-
-                    <p>Pisica - talie - data - ora </p>
-                    <table>
-                        <tr>
-                            <th>Place</th>
-                            <th>Feline name</th>
-                            <th>Breed</th>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Felina 1</td>
-                            <td>sfinx</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Felina 2</td>
-                            <td>siameza</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Felina 3</td>
-                            <td>british shorthair</td>
-                        </tr>
-
-                    </table>
+                    <?php
+                        }
+                    } ?>
+                    
                 </div>
+
 
 
                 <button type="button" class="collapsible">See future races</button>
 
                 <div class="content">
-                    <p>Pisica - talie medie - data - ora </p>
+                    <?php
+                    $future_races = $data["future_races"];
+                    if ($future_races != null) {
+                        foreach ($future_races as $race) {
+                            echo "<p>" . $race->name . " - " . $race->type . " - " . $race->size . " </p>";
+                            echo "<p>  [" . $race->start . "] -  [" . $race->finish . "] </p>";
+
+                    ?>
                     <table>
                         <tr>
+                            <th>Place</th>
                             <th>Feline name</th>
                             <th>Breed</th>
-                            <th>Betting Odds</th>
                         </tr>
                         <tr>
-                            <td>Felina 1</td>
-                            <td>sfinx</td>
-                            <td><button class="odds-btn" onclick="placeBet()">
-                                    2.0</button></td>
-                        </tr>
-                        <tr>
-                            <td>Felina 2</td>
-                            <td>siameza</td>
-                            <td><button class="odds-btn" onclick="placeBet()">
-                                    2.75</button></td>
-                        </tr>
-                        <tr>
-                            <td>Felina 3</td>
-                            <td>british shorthair</td>
-                            <td><button class="odds-btn" onclick="placeBet()">
-                                    21.0</button></td>
-                        </tr>
-
+                    <?php
+                            $felines = $data["felines"];
+                            if ($felines != null) {
+                                foreach ($felines as $feline){
+                                    if($feline->comp_name == $race->name){
+                                        // echo "SUNT AICI";
+                                        // is in this competition ?>
+                                     <tr>
+                                        <td> <?php echo $feline->rank ?> </td> 
+                                        <td> <?php echo $feline->name ?> </td>
+                                        <td> <?php echo $feline->breed ?> </td>
+                                    </tr>
+                      
+                    <?php
+                                    }
+                                }
+                            } 
+                    ?>
                     </table>
-
-                    <p>Tigru - data - ora </p>
-                    <table>
-                        <tr>
-                            <th>Feline name</th>
-                            <th>Breed</th>
-                            <th>Betting Odds</th>
-                        </tr>
-                        <tr>
-                            <td>Tiger 1</td>
-                            <td>tiger</td>
-                            <td><button class="odds-btn" onclick="placeBet()">
-                                    2.0</button></td>
-                        </tr>
-                        <tr>
-                            <td>Tiger 2</td>
-                            <td>tiger</td>
-                            <td><button class="odds-btn" onclick="placeBet()">
-                                    2.75</button></td>
-                        </tr>
-                        <tr>
-                            <td>Tiger 3</td>
-                            <td>tiger</td>
-                            <td><button class="odds-btn" onclick="placeBet()">
-                                    17.5</button></td>
-                        </tr>
-
-                    </table>
+                    <?php
+                        }
+                    } ?>
+                    
                 </div>
+               
             </div>
         </div>
 

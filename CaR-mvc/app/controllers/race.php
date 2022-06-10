@@ -43,20 +43,22 @@ class Race extends Controller
         $user = getLoggedInUser();
 
         $past_races = getPastRaces();
-        echo "past";
-        var_dump($past_races);
+        //echo "past";
+        //var_dump($past_races);
         // foreach($races as $race){
         //     var_dump($race->id);
         // }
         
-        echo "---current---";
+        //echo "---current---";
         $current_races = getCurrentRaces();
-        var_dump($current_races);
+        //var_dump($current_races);
 
-        echo "---future---";
+        //echo "---future---";
         $future_races = getFutureRaces();
-        var_dump($future_races);
-        $this->view('race/live-races', ["user" => $user, "past_races" => $past_races, "current_races" =>$current_races, "future_races" => $future_races]);
+        //var_dump($future_races);
+
+        $felines = getAllContenstants();
+        $this->view('race/live-races', ["user" => $user, "past_races" => $past_races, "current_races" =>$current_races, "future_races" => $future_races, "felines"=> $felines]);
     }
 
     public function schedule(){
