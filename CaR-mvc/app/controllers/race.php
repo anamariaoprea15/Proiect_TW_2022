@@ -1,5 +1,6 @@
 <?php
 include_once "../app/models/auth.utils.php";
+include_once "../app/models/race.utils.php";
 
 class Race extends Controller
 {
@@ -41,7 +42,21 @@ class Race extends Controller
 
         $user = getLoggedInUser();
 
-        $this->view('race/live-races', ["user" => $user]);
+        $past_races = getPastRaces();
+        echo "past";
+        var_dump($past_races);
+        // foreach($races as $race){
+        //     var_dump($race->id);
+        // }
+        
+        echo "---current---";
+        $current_races = getCurrentRaces();
+        var_dump($current_races);
+
+        echo "---future---";
+        $future_races = getFutureRaces();
+        var_dump($future_races);
+        $this->view('race/live-races', ["user" => $user, "past_races" => $past_races, "current_races" =>$current_races, "future_races" => $future_races]);
     }
 
     public function schedule(){

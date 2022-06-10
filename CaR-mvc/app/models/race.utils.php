@@ -42,3 +42,87 @@ function addFeline($name, $type, $size, $breed, $comp_name)
      $queryStmt->execute();
      $queryStmt->close();
 }
+
+
+
+function resultToArray($result) {
+    $rows = array();
+    while($row = $result->fetch_assoc()) {
+        $rows[] = $row;
+    }
+    return $rows;
+}
+
+
+
+function getPastRaces(){
+
+    global $conn;
+    $races = array();
+    // select only races that has finished
+    $query = 'SELECT * FROM competitions where DATE(start) < DATE(sysdate()) AND DATE(finish) < DATE(sysdate())';
+    $result = $conn->query($query);
+ 
+    if($result->num_rows > 0){
+        $rows = resultToArray($result);
+        // var_dump($rows); // Array of rows
+         foreach ($rows as $row) {
+             $races[] = new Competition($row["id"], $row["name"],$row["type"],$row["size"],$row["start"],$row["finish"]);
+         }
+         $result->free();
+
+         return $races;
+    }
+    else {
+       return null;
+    } 
+
+}
+
+
+function getCurrentRaces(){
+
+    global $conn;
+    $races = array();
+    // select only races that has finished
+    $query = 'SELECT * FROM competitions where DATE(start) <= DATE(sysdate()) AND DATE(finish) >= DATE(sysdate())';
+    $result = $conn->query($query);
+ 
+    if($result->num_rows > 0){
+        $rows = resultToArray($result);
+        // var_dump($rows); // Array of rows
+         foreach ($rows as $row) {
+             $races[] = new Competition($row["id"], $row["name"],$row["type"],$row["size"],$row["start"],$row["finish"]);
+         }
+         $result->free();
+
+         return $races;
+    }
+    else {
+       return null;
+    } 
+}
+
+function getFutureRaces(){
+    global $conn;
+    $races = array();
+    // select only races that has finished
+    $query = 'SELECT * FROM competitions where DATE(start) > DATE(sysdate()) AND DATE(finish) > DATE(sysdate())';
+    $result = $conn->query($query);
+ 
+    if($result->num_rows > 0){
+        $rows = resultToArray($result);
+        // var_dump($rows); // Array of rows
+         foreach ($rows as $row) {
+             $races[] = new Competition($row["id"], $row["name"],$row["type"],$row["size"],$row["start"],$row["finish"]);
+         }
+         $result->free();
+
+         return $races;
+    }
+    else {
+       return null;
+    } 
+}
+
+
