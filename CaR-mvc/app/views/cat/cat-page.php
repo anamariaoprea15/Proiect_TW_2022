@@ -20,8 +20,16 @@
                 <h3>Cat Race</h3>
             </div>
 
-            <button class="form-btn" onclick="openForm()">
-                Login</button>
+            <?php if ($data["user"] == null) { ?>
+                <button class="form-btn" onclick="openForm()">
+                    Login</button>
+            <?php } else if ($data["user"]->username != null) { ?>
+                <div>
+                    <a href="../profile/index" class="form-btn">Profile</a>
+                    <a href="../profile/logout" class="form-btn">Logout</a>
+                </div>
+
+            <?php }  ?>
         </div>
 
 
