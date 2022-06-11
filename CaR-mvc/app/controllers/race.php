@@ -114,5 +114,22 @@ class Race extends Controller
         header("Location: ../race/live_races");
     }
 
+    public function place_bet(){
+        
+        //get the betting sum and the id of the contestant on which we bet
+        if(isset($_POST["betting-sum"]) and isset($_POST["id_bet"])){
+            echo $_POST["betting-sum"];
+    
+            echo $_POST["id_bet"];
+
+            $user = getLoggedInUser();
+    
+            echo $user->username;
+            addToBetHistory($_POST["betting-sum"], $_POST["id_bet"], $user->username);
+        }
+       
+        header("Location: ../race/live_races");
+    }
+
 
 }

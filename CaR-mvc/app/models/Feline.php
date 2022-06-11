@@ -1,5 +1,6 @@
 <?php 
 class Feline {
+    public $id;
     public $name;
     public $type;
     public $size;
@@ -8,8 +9,9 @@ class Feline {
     public $comp_name;
     
 
-    public function __construct($name, $type, $size, $breed, $rank, $comp_name)
+    public function __construct($id, $name, $type, $size, $breed, $rank, $comp_name)
     {
+        $this -> id = $id;
         $this -> name = $name;
         $this -> type = $type;
         $this -> size = $size;

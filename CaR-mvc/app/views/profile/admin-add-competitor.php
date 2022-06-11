@@ -20,13 +20,16 @@
                 <h3>Cat Race</h3>
             </div>
 
-            <!-- <button class="form-btn">
-                Admin profile</button> -->
-            <div>
-            <form method="POST" action="../profile/logout">
-                     <button type="submit" class="form-btn"> Logout </button>
-                </form> 
-            </div>
+            <?php if ($data["user"] == null) { ?>
+                <button class="form-btn" onclick="openForm()">
+                    Login</button>
+            <?php } else if ($data["user"]->username != null) { ?>
+                <div>
+                    <a href="../profile/index" class="form-btn">Profile admin</a>
+                    <a href="../profile/logout" class="form-btn">Logout</a>
+                </div>
+
+            <?php }  ?>
         </div>
 
 
@@ -183,7 +186,6 @@
                 document.getElementById('showCat').style.display = "block";
             }
             else { document.getElementById('showCat').style.display = "none";
-                   document.getElementById('size').value = null;
             }
 
         });
@@ -199,7 +201,6 @@
             else {
                 document.getElementById('showSize').style.display = "none";
                 document.getElementById('showBreed').style.display = "none";
-                document.getElementById("size2").value = null;
                 document.getElementById("breed").value = null;
             }
 

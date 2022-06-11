@@ -139,7 +139,7 @@ function getAllContenstants()
         $rows = resultToArray($result);
         // var_dump($rows); // Array of rows
         foreach ($rows as $row) {
-            $felines[] = new Feline($row["name"], $row["type"], $row["size"], $row["breed"], $row["rank"], $row["comp_name"]);
+            $felines[] = new Feline($row["id"], $row["name"], $row["type"], $row["size"], $row["breed"], $row["rank"], $row["comp_name"]);
         }
         $result->free();
 
@@ -147,4 +147,41 @@ function getAllContenstants()
     } else {
         return null;
     }
+}
+
+function getFelineByID($id){
+
+    
+    //query baza de date
+    global $conn;
+
+    $queryStmt = $conn->prepare('Select * from felines where id = ?');
+    $queryStmt->bind_param('i', $id); //i= int value
+
+    $queryStmt->execute();
+    $results = $queryStmt->get_result();
+    $queryStmt->close();
+
+    if ($results->num_rows == 1) {
+        $row = $results->fetch_assoc();
+        //echo $row["username"] . ' ' . $row["password"];
+        return new Feline($row["id"], $row["name"], $row["type"], $row["size"], $row["breed"], $row["rank"], $row["comp_name"]);
+    }
+    return null;
+
+
+}
+function addToBetHistory($betting_sum, $feline_id, $username){
+
+      global $conn;
+
+      $feline = getFelineByID($feline_id);
+      if($feline){
+        $queryStmt = $conn->prepare("INSERT INTO betting_history (bet_sum, feline_id, feline_name, comp_name, date, username) VALUES (?, ?, ?, ?, ?, ?)");
+        $queryStmt->bind_param('iissss', $betting_sum, $feline_id, $feline->name, $feline->comp_name, date("Y-m-d"), $username);
+        $queryStmt->execute();
+        $queryStmt->close();
+      }
+   
+
 }

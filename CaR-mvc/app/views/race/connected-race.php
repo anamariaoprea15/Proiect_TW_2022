@@ -84,13 +84,13 @@
     </main>
 
     <div class="bet-popup" id="bettingForm">
-        <form action="#" class="bet-container">
+        <form method="POST" action="../race/place_bet" class="bet-container">
             <h3>Place bet</h3>
             <label for="betting-sum">Bet sum</label>
             <input type="number" id="betting-sum" name="betting-sum" min="1" required>
 
 
-            <button type="submit" class="odds-btn" onclick="loginForBet()">Bet</button>
+            <button type="submit" class="odds-btn" onclick="placeBet()">Bet</button>
 
 
             <button type="button" class="odds-btn" onclick="closeBet()">close</button>

@@ -92,8 +92,17 @@
                                      <tr>
                                         <td> <?php echo $feline->name ?> </td>
                                         <td> <?php echo $feline->breed ?> </td>
-                                        <td><button class="odds-btn" onclick="placeBet()">
+                                       
+                                         <?php if ($data["user"] == null) { ?>
+                                        <td><button class="odds-btn" onclick="loginForBet()">
                                                 2.0</button></td>
+                                    <?php } else if ($data["user"]->username != null) { ?>
+                                        
+                                    
+                                        <td><button class="odds-btn" onclick="placeBet( <?php echo $feline->id; ?>)">
+                                                2.0</button></td>
+                                        </form>
+                                    <?php }  ?>
                                     </tr>
                       
                     <?php
@@ -167,9 +176,9 @@
                     ?>
                     <table>
                         <tr>
-                            <th>Place</th>
-                            <th>Feline name</th>
+                           <th>Feline name</th>
                             <th>Breed</th>
+                            <th>Betting Odds</th>
                         </tr>
                         <tr>
                     <?php
@@ -180,9 +189,16 @@
                                         // echo "SUNT AICI";
                                         // is in this competition ?>
                                      <tr>
-                                        <td> <?php echo $feline->rank ?> </td> 
                                         <td> <?php echo $feline->name ?> </td>
                                         <td> <?php echo $feline->breed ?> </td>
+                                        <?php if ($data["user"] == null) { ?>
+                                        <td><button class="odds-btn" onclick="loginForBet()">
+                                                2.0</button></td>
+                                    <?php } else if ($data["user"]->username != null) { ?>
+                                        <td><button class="odds-btn" onclick="placeBet()">
+                                                2.0</button></td>
+
+                                    <?php }  ?>
                                     </tr>
                       
                     <?php
@@ -203,13 +219,14 @@
     </main>
 
     <div class="bet-popup" id="bettingForm">
-        <form method="POST" action="#" class="bet-container">
+        <form method="POST" action="../race/place_bet" class="bet-container">
             <h3>Place bet</h3>
             <label for="betting-sum">Bet sum</label>
             <input type="number" id="betting-sum" name="betting-sum" min="1" required>
 
-
-            <button type="submit" class="odds-btn" onclick="loginForBet()">Bet</button>
+            <input type="hidden" name="id_bet" id="id_bet"  value="<?php echo $feline->name ?>">        
+        
+            <button type="submit" class="odds-btn" >Bet</button>
 
 
             <button type="button" class="odds-btn" onclick="closeBet()">close</button>
@@ -282,8 +299,9 @@
     <script src="../js/form-script.js"> </script>
 
     <script>
-        function placeBet() {
+        function placeBet(id) {
             document.getElementById("bettingForm").style.display = "block";
+            document.getElementById("id_bet").value = id;
         }
 
         function closeBet() {
