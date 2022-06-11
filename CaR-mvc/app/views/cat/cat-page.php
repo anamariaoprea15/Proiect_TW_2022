@@ -106,6 +106,14 @@
             </div>
 
             <div class="history">
+            <?php
+                    $current_races = $data["current_races"];
+                    if ($current_races != null) {
+                        foreach ($current_races as $race) {
+                            echo "<p>" . $race->name . " - " . $race->type . " - " . $race->size . " </p>";
+                            echo "<p>  [" . $race->start . "] -  [" . $race->finish . "] </p>";
+
+                    ?>
                 <table>
                     <tr>
                         <th>Race</th>
@@ -113,6 +121,35 @@
                         <th>Result (position)</th>
                     </tr>
                     <tr>
+                    <?php
+                            $felines = $data["felines"];
+                            if ($felines != null) {
+                                foreach ($felines as $feline){
+                                    if($feline->comp_name == $race->name){
+                                        // echo "SUNT AICI";
+                                        // is in this competition ?>
+                                     <tr>
+                                        <td> <?php echo $feline->name ?> </td>
+                                        <td> <?php echo $feline->breed ?> </td>
+                                       
+                                         <?php if ($data["user"] == null) { ?>
+                                        <td><button class="odds-btn" onclick="loginForBet()">
+                                                2.0</button></td>
+                                    <?php } else if ($data["user"]->username != null) { ?>
+                                        
+                                    
+                                        <td><button class="odds-btn" onclick="placeBet( <?php echo $feline->id; ?>)">
+                                                2.0</button></td>
+                                        </form>
+                                    <?php }  ?>
+                                    </tr>
+                      
+                    <?php
+                                    }
+                                }
+                            } 
+                    ?>
+                    <!-- <tr>
                         <td>Race #1</td>
                         <td>13/04/2022</td>
                         <td> 4 </td>
@@ -126,9 +163,12 @@
                         <td>Race #3</td>
                         <td>04/04/2022</td>
                         <td>1</td>
-                    </tr>
+                    </tr> -->
 
                 </table>
+                <?php
+                        }
+                    } ?>
             </div>
         </div>
     </main>
