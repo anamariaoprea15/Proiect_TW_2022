@@ -43,8 +43,8 @@
                 <div class="sidenav">
                     <h3>Name</h3>
                     <h3>Sold 1500$</h3><br>
-                    <a href="user_dashUpc">Upcoming Bets</a>
-                    <a href="user_dashHistory">History</a>
+                    <a href="user_dashUpc.html">Upcoming Bets</a>
+                    <a href="user_dashHistory.html">History</a>
                     <button class="form-btn1" onclick="openForm()">
                         Settings</button>
                 </div>
@@ -55,64 +55,40 @@
                     <h2>History</h2>
                 </div>
                 <table>
-                    <tr>
-                        <th>Feline name</th>
-                        <th>Breed</th>
-                        <th>Date</th>
-                        <th>Time</th>
-                        <th>Money Win/loose</th>
-                        <th>Odds</th>
-                        
-                    </tr>
-                    <tr>
-                        <td>Felina 1</td>
-                        <td>sfinx</td>
-                        <td>2022-12-14</td>
-                        <td>14:00</td>
-                        <td>+1300$</td>
-                        <td>2.6</td>
-                    </tr>
-                    <tr>
-                        <td>Felina 2</td>
-                        <td>siameza</td>
-                        <td>2022-12-14</td>
-                        <td>14:00</td>
-                        <td>-1300$</td>
-                        <td>2.45</td>
-                    </tr>
-                    <tr>
-                        <td>Felina 3</td>
-                        <td>british shorthair</td>
-                        <td>2022-12-14</td>
-                        <td>14:00</td>
-                        <td>+300$</td>
-                        <td>1.48</td>
-                    </tr>
-                    <tr>
-                        <td>Felina 1</td>
-                        <td>sfinx</td>
-                        <td>2022-12-14</td>
-                        <td>14:00</td>
-                        <td>+100$</td>
-                        <td>1.78</td>
-                    </tr>
-                    <tr>
-                        <td>Felina 2</td>
-                        <td>siameza</td>
-                        <td>2022-12-14</td>
-                        <td>14:00</td>
-                        <td>-130$</td>
-                        <td>1.78</td>
-                    </tr>
-                    <tr>
-                        <td>Felina 3</td>
-                        <td>british shorthair</td>
-                        <td>2022-12-14</td>
-                        <td>14:00</td>
-                        <td>+1300$</td>
-                        <td>1.78</td>
-                    </tr>
+                    <thead>
+                        <tr>
+                            <th>Feline name</th>
+                            <th>Breed</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Money</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $servername = "localhost";
+                        $username = "root";
+                        $password = "";
+                        $database = "mystore";
 
+                        $connection = new mysqli($servername,$username,$password,$database);
+            
+                        if($connection->connect_error){
+                            die("Connection failed: " .  $connection->connect_error);
+                        }
+                        $sql = "SELECT * FROM bets WHERE Date_ < CURDATE() or (Date_ = CURDATE() and Time_ < CURTIME())";
+                        $result = $connection->query($sql);
+                        while($row = $result->fetch_assoc()){
+                            echo"<tr>
+                            <td>" . $row["feline_name"] . "</td>
+                            <td>" . $row["Breed"] . "</td>
+                            <td>" . $row["Date_"] . "</td>
+                            <td>" . $row["Time_"] . "</td>
+                            <td>" . $row["Money"] . "</td>
+                            </tr>";
+                        }
+                        ?>
+                    </tbody>
                 </table>
             </div>
         </div>
