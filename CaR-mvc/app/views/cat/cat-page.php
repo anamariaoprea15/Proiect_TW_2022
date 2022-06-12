@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cat Profile</title>
-    <link rel="stylesheet" href="../css/cat-page-style.css">
-    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../../css/cat-page-style.css">
+    <link rel="stylesheet" href="../../css/header.css">
 
 </head>
 
@@ -16,7 +16,7 @@
     <header>
         <div class="header-top">
             <div class="logo">
-                <img src="../images/logo.png" alt="logo">
+                <img src="../../images/logo.png" alt="logo">
                 <h3>Cat Race</h3>
             </div>
 
