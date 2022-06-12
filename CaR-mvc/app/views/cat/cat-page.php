@@ -20,16 +20,8 @@
                 <h3>Cat Race</h3>
             </div>
 
-            <?php if ($data["user"] == null) { ?>
-                <button class="form-btn" onclick="openForm()">
-                    Login</button>
-            <?php } else if ($data["user"]->username != null) { ?>
-                <div>
-                    <a href="../profile/index" class="form-btn">Profile</a>
-                    <a href="../profile/logout" class="form-btn">Logout</a>
-                </div>
-
-            <?php }  ?>
+            <button class="form-btn" onclick="openForm()">
+                Login</button>
         </div>
 
 
@@ -92,89 +84,55 @@
         <div class="container">
             <div class="profile">
                 <div class="pfp">
-                    <img src="https://s.iw.ro/gateway/g/ZmlsZVNvdXJjZT1odHRwJTNBJTJGJTJG/c3RvcmFnZWRpZ2lhbmltYWx3b3JsZC5y/Y3MtcmRzLnJvJTJGc3RvcmFnZSUyRjIw/MTklMkYwNSUyRjIxJTJGMTA3NTcyNl8x/MDc1NzI2X29jZWxvdC5qcGcmdz03ODAm/aD02MDAmemM9MSZoYXNoPWNlNGYxZDk0MDY2MTFiZmJhNWJlMjc0ZjlkYzFlZDVm.thumb.jpg"
-                        alt="pfp">
+                    <img src="https://s.iw.ro/gateway/g/ZmlsZVNvdXJjZT1odHRwJTNBJTJGJTJG/c3RvcmFnZWRpZ2lhbmltYWx3b3JsZC5y/Y3MtcmRzLnJvJTJGc3RvcmFnZSUyRjIw/MTklMkYwNSUyRjIxJTJGMTA3NTcyNl8x/MDc1NzI2X29jZWxvdC5qcGcmdz03ODAm/aD02MDAmemM9MSZoYXNoPWNlNGYxZDk0MDY2MTFiZmJhNWJlMjc0ZjlkYzFlZDVm.thumb.jpg" alt="pfp">
                 </div>
                 <div class="info">
-                    <h3>Name: felina</h3>
-                    <p>Size: </p>
-                    <p>Breed: </p>
-                    <p>Avg. Ranking: 3.4</p>
-                    <p>Number of podiums: 2</p>
+                    <h3>Name: <?php echo $data["cat_data"][0]->name; ?></h3>
+                    <p>Size: <?php echo $data["cat_data"][0]->size; ?> </p>
+                    <p>Breed: <?php echo $data["cat_data"][0]->breed; ?></p>
+                    <p>Avg. Ranking: <?php echo $data["avgRank"]; ?></p>
+                    <p>Number of podiums: <?php echo $data["noPodiums"]; ?></p>
                 </div>
 
             </div>
 
             <div class="history">
-            <?php
-                    $current_races = $data["current_races"];
-                    if ($current_races != null) {
-                        foreach ($current_races as $race) {
-                            echo "<p>" . $race->name . " - " . $race->type . " - " . $race->size . " </p>";
-                            echo "<p>  [" . $race->start . "] -  [" . $race->finish . "] </p>";
-
-                    ?>
                 <table>
                     <tr>
                         <th>Race</th>
                         <th>Date</th>
                         <th>Result (position)</th>
                     </tr>
-                    <tr>
-                    <?php
-                            $felines = $data["felines"];
-                            if ($felines != null) {
-                                foreach ($felines as $feline){
-                                    if($feline->comp_name == $race->name){
-                                        // echo "SUNT AICI";
-                                        // is in this competition ?>
-                                     <tr>
-                                        <td> <?php echo $feline->name ?> </td>
-                                        <td> <?php echo $feline->breed ?> </td>
-                                       
-                                         <?php if ($data["user"] == null) { ?>
-                                        <td><button class="odds-btn" onclick="loginForBet()">
-                                                2.0</button></td>
-                                    <?php } else if ($data["user"]->username != null) { ?>
-                                        
-                                    
-                                        <td><button class="odds-btn" onclick="placeBet( <?php echo $feline->id; ?>)">
-                                                2.0</button></td>
-                                        </form>
-                                    <?php }  ?>
-                                    </tr>
-                      
-                    <?php
-                                    }
-                                }
-                            } 
-                    ?>
-                    <!-- <tr>
-                        <td>Race #1</td>
-                        <td>13/04/2022</td>
-                        <td> 4 </td>
-                    </tr>
-                    <tr>
-                        <td>Race #2</td>
-                        <td>07/04/2022</td>
-                        <td>3</td>
-                    </tr>
-                    <tr>
-                        <td>Race #3</td>
-                        <td>04/04/2022</td>
-                        <td>1</td>
-                    </tr> -->
 
-                </table>
-                <?php
+
+                    <?php
+                    $table = $data["cat_data"];
+                    if ($table != null) {
+                        foreach ($table as $row) {
+                    ?>
+                            <tr>
+                                <td> <?php echo $row->comp_name; ?> </td>
+                                <!-- <td> <?php echo $data["date"]; ?> </td> -->
+                                <td> <?php
+
+                                        include_once "../app/models/cat.utils.php";
+                                        echo getData($row->comp_name);
+
+                                        ?> </td>
+                                <td> <?php echo $row->rank; ?> </td>
+                            </tr>
+
+                    <?php
                         }
-                    } ?>
+                    }
+                    ?>
+                </table>
             </div>
         </div>
     </main>
 
 
-    <script src="form-script.js"> </script>
+    <script src="../js/form-script.js"> </script>
 </body>
 
 </html>
