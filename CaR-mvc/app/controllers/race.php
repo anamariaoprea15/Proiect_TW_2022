@@ -122,13 +122,15 @@ class Race extends Controller
     
             echo $_POST["id_bet"];
 
+            echo "===" . $_POST["cota"] . "===";
+
             $user = getLoggedInUser();
     
             echo $user->username;
             addToBetHistory($_POST["betting-sum"], $_POST["id_bet"], $user->username);
         }
        
-        header("Location: ../race/live_races");
+      //  header("Location: ../race/live_races");
     }
 
 
