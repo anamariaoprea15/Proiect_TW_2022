@@ -26,11 +26,11 @@
 
 
         <nav class="top-menu">
-            <a href="../race/index"> Cat </a>
-            <a href="../race/index"> Tiger </a>
-            <a href="../race/index"> Puma </a>
-            <a href="../race/index"> Cheetah </a>
-            <a href="../race/index"> Jaguar </a>
+            <a href="../../race/index"> Cat </a>
+            <a href="../../race/index"> Tiger </a>
+            <a href="../../race/index"> Puma </a>
+            <a href="../../race/index"> Cheetah </a>
+            <a href="../../race/index"> Jaguar </a>
         </nav>
     </header>
 
@@ -132,7 +132,7 @@
     </main>
 
 
-    <script src="../js/form-script.js"> </script>
+    <script src="../../js/form-script.js"> </script>
 </body>
 
 </html>
