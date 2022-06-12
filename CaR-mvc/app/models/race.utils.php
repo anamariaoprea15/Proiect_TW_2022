@@ -169,8 +169,8 @@ function getFelineByID($id){
     }
     return null;
 
-
 }
+
 function addToBetHistory($betting_sum, $feline_id, $username){
 
       global $conn;
