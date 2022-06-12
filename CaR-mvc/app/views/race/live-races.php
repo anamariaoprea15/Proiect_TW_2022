@@ -147,7 +147,7 @@
                                         // is in this competition ?>
                                      <tr>
                                         <td> <?php echo $feline->rank ?> </td> 
-                                        <td><a href="../cat/profile/<?php echo $feline->name ?> " > <?php echo $feline->name ?> </a>  </td>
+                                        <td><a href="../cat/profile/<?php echo $feline->name ?> "> <?php echo $feline->name ?> </a>  </td>
                                         <td> <?php echo $feline->breed ?> </td>
                                     </tr>
                       

@@ -50,12 +50,28 @@ main {
     flex: 3;
 }
 
+
 a {
     text-decoration: none;
     color: white;
     line-height: 2;
 
 }
+
+td a{
+    color: #001e28;
+}
+
+td a:hover{
+    color: #6e8288;
+}
+
+td{
+    text-decoration: none;
+    color: black;
+    line-height: 2;
+}
+
 
 a:hover {
     color: #dddddd;
