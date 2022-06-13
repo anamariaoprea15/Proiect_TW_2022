@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<competitions>
+  <competition>
+    <name>comp1</name>
+    <type>cat</type>
+    <start>2022-06-09</start>
+    <finish>2022-06-11</finish>
+  </competition>
+  <competition>
+    <name>comp2</name>
+    <type>cat</type>
+    <start>2022-06-09</start>
+    <finish>2022-06-10</finish>
+  </competition>
+  <competition>
+    <name>comp3</name>
+    <type>tiger</type>
+    <start>2022-06-09</start>
+    <finish>2022-06-09</finish>
+  </competition>
+  <competition>
+    <name>Race1</name>
+    <type>puma</type>
+    <start>2022-06-12</start>
+    <finish>2022-06-15</finish>
+  </competition>
+  <competition>
+    <name>competitiee</name>
+    <type>cat</type>
+    <start>2022-06-11</start>
+    <finish>2022-06-12</finish>
+  </competition>
+  <competition>
+    <name>Puma race</name>
+    <type>puma</type>
+    <start>2022-06-11</start>
+    <finish>2022-06-14</finish>
+  </competition>
+  <competition>
+    <name>Chetaah race</name>
+    <type>chetaah</type>
+    <start>2022-06-19</start>
+    <finish>2022-06-23</finish>
+  </competition>
+  <competition>
+    <name>jaguar race</name>
+    <type>jaguar</type>
+    <start>2022-06-11</start>
+    <finish>2022-06-14</finish>
+  </competition>
+</competitions>

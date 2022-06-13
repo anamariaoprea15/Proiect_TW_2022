@@ -149,9 +149,10 @@ function getAllContenstants()
     }
 }
 
-function getFelineByID($id){
+function getFelineByID($id)
+{
 
-    
+
     //query baza de date
     global $conn;
 
@@ -168,20 +169,59 @@ function getFelineByID($id){
         return new Feline($row["id"], $row["name"], $row["type"], $row["size"], $row["breed"], $row["rank"], $row["comp_name"]);
     }
     return null;
-
 }
 
-function addToBetHistory($betting_sum, $feline_id, $cota, $username){
+function addToBetHistory($betting_sum, $feline_id, $cota, $username)
+{
 
-      global $conn;
+    global $conn;
 
-      $feline = getFelineByID($feline_id);
-      if($feline){
+    $feline = getFelineByID($feline_id);
+    if ($feline) {
         $queryStmt = $conn->prepare("INSERT INTO betting_history (bet_sum, cota, feline_id, feline_name, comp_name, date, username) VALUES (?, ?, ?, ?, ?, ?, ?)");
         $queryStmt->bind_param('idissss', $betting_sum, $cota, $feline_id, $feline->name, $feline->comp_name, date("Y-m-d"), $username);
         $queryStmt->execute();
         $queryStmt->close();
-      }
-
+    }
 }
 
+function generateXML()
+{
+
+    $con = mysqli_connect("localhost", "root", "", "catrace");
+
+    if (!$con) {
+        echo "DB not Connected...";
+    } else {
+        $result = mysqli_query($con, "Select * from competitions");
+        if ($result->num_rows > 0) {
+            $xml = new DOMDocument("1.0");
+
+            // It will format the output in xml format otherwise
+            // the output will be in a single row
+            $xml->formatOutput = true;
+            $catrace = $xml->createElement("competitions");
+            $xml->appendChild($catrace);
+            while ($row = mysqli_fetch_array($result)) {
+                $competition = $xml->createElement("competition");
+                $catrace->appendChild($competition);
+
+                $name = $xml->createElement("name", $row['name']);
+                $competition->appendChild($name);
+
+                $type = $xml->createElement("type", $row['type']);
+                $competition->appendChild($type);
+
+                $start = $xml->createElement("start", $row['start']);
+                $competition->appendChild($start);
+
+                $finish = $xml->createElement("finish", $row['finish']);
+                $competition->appendChild($finish);
+            }
+            //echo "<xmp>".$xml->saveXML()."</xmp>";
+            $xml->save("../public/export/report.xml");
+        } else {
+            echo "error";
+        }
+    }
+}

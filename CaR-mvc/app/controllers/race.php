@@ -98,6 +98,10 @@ class Race extends Controller
 
         // close the file
         fclose($f);
+
+        // generate xml 
+        generateXML();
+            
         $this->view('race/schedule', ["user" => $user]);
     }
 

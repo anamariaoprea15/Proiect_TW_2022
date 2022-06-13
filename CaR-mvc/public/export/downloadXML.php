@@ -1,37 +1,41 @@
 <?php
-$con=mysqli_connect('loaclhost','root','','catrace');
-$fire=mysqli_query($con, "slect * fromn competitions");
-$xml=new XMLWriter();
-$xml->openURI("php://output");
-$xml->startDocument();
-$xml->setIndent(true);
-$xml->startElement('competitions');
-    while($row=mysqli_fetch_assoc($fire))
-    {
-        $xml->startElement('user');
-            $xml->startElement('name');
-            $xml->writeRaw($row['name']);
-            $xml->endElement();
-            $xml->startElement('type');
-            $xml->writeRaw($row['type']);
-            $xml->endElement();
-            $xml->startElement('size');
-            $xml->writeRaw($row['size']);
-            $xml->endElement();
-            $xml->startElement('start');
-            $xml->writeRaw($row['start']);
-            $xml->endElement();
-            $xml->startElement('finish');
-            $xml->writeRaw($row['finish']);
-            $xml->endElement();
-            $xml->startElement('id');
-            $xml->writeRaw($row['id']);
-            $xml->endElement();
-        $xml->endElement();
+$con=mysqli_connect("localhost", "root", "", "catrace");
+
+if(!$con){
+	echo "DB not Connected...";
 }
-$xml->endElement();
-header('Content-Type:text/xml');
-$xml->flush();
+else{
+$result=mysqli_query($con, "Select * from competitions");
+if($result->num_rows>0){
+$xml = new DOMDocument("1.0");
 
-
+// It will format the output in xml format otherwise
+// the output will be in a single row
+$xml->formatOutput=true;
+$catrace=$xml->createElement("competitions");
+$xml->appendChild($catrace);
+while($row=mysqli_fetch_array($result)){
+	$competition=$xml->createElement("competition");
+	$catrace->appendChild($competition);
+	
+	$name=$xml->createElement("name", $row['name']);
+	$competition->appendChild($name);
+	
+	$type=$xml->createElement("type", $row['type']);
+	$competition->appendChild($type);
+	
+	$start=$xml->createElement("start", $row['start']);
+	$competition->appendChild($start);
+	
+	$finish=$xml->createElement("finish", $row['finish']);
+	$competition->appendChild($finish);
+		
+}
+//echo "<xmp>".$xml->saveXML()."</xmp>";
+$xml->save("../export/report.xml");
+}
+else{
+	echo "error";
+}
+}
 ?>
