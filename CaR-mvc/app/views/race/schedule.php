@@ -59,8 +59,8 @@
             </div>
             <div class="right">
                 <p> Get the report about our schedule! </p>
-
-                <a href="path_to_csv_file" class="btn" download="schedule.csv">Download CSV</a>
+               
+                <a href="../export/schedule.csv" class="btn" download="schedule.csv">Download CSV</a>
                 <a href="path_to_html_file" class="btn" download="schedule.html">Download HTML</a>
                 <a href="path_to_md_file" class="btn" download="schedule.md">Download Markdown</a>
                 <a href="path_to_xml_file" class="btn" download="schedule.xml">Download XML</a>

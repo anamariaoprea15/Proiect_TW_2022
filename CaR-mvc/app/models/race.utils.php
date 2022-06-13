@@ -182,6 +182,6 @@ function addToBetHistory($betting_sum, $feline_id, $cota, $username){
         $queryStmt->execute();
         $queryStmt->close();
       }
-   
 
 }
+
