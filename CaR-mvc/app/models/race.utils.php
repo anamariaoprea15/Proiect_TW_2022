@@ -171,14 +171,14 @@ function getFelineByID($id){
 
 }
 
-function addToBetHistory($betting_sum, $feline_id, $username){
+function addToBetHistory($betting_sum, $feline_id, $cota, $username){
 
       global $conn;
 
       $feline = getFelineByID($feline_id);
       if($feline){
-        $queryStmt = $conn->prepare("INSERT INTO betting_history (bet_sum, feline_id, feline_name, comp_name, date, username) VALUES (?, ?, ?, ?, ?, ?)");
-        $queryStmt->bind_param('iissss', $betting_sum, $feline_id, $feline->name, $feline->comp_name, date("Y-m-d"), $username);
+        $queryStmt = $conn->prepare("INSERT INTO betting_history (bet_sum, cota, feline_id, feline_name, comp_name, date, username) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        $queryStmt->bind_param('idissss', $betting_sum, $cota, $feline_id, $feline->name, $feline->comp_name, date("Y-m-d"), $username);
         $queryStmt->execute();
         $queryStmt->close();
       }

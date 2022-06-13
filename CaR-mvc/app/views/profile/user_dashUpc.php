@@ -42,11 +42,11 @@
             <div class="left">
                 <div class="sidenav">
                     <?php
-                    $user = getUser($username, $password);
-                    
-                    <h3>$user</h3>
-                    <h3>Sold 1500$</h3><br>
+                                        
+                    echo  "<h3>" . $data["user"]->username . " </h3>";
                     ?>
+                    <h3>Sold 1500$</h3><br>
+                   
                     <a href="user_dashUpc.html">Upcoming Bets</a>
                     <a href="user_dashHistory.html">History</a>
                     <button class="form-btn1" onclick="openForm()">
