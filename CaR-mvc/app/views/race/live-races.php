@@ -47,12 +47,12 @@
     <main>
         <div class="container">
             <div class="left">
-                <!-- <div class="categories">
+                <div class="categories">
                     <h3>Categories </h3>
                     <a href="race.html">Small sized cats</a> <br>
                     <a href="race.html">Medium sized cats</a> <br>
                     <a href="race.html">Large cats</a> <br>
-                </div> -->
+                </div>
                 <div class="schedule">
                     <h3>Schedule </h3>
                     <a href="../race/schedule">Schedule</a> <br>
@@ -95,14 +95,12 @@
                                        
                                          <?php if ($data["user"] == null) { ?>
                                         <td><button class="odds-btn" onclick="loginForBet()">
-                                        <?php echo rand(1,10); ?>
-                                                </button></td>
+                                                2.0</button></td>
                                     <?php } else if ($data["user"]->username != null) { ?>
                                         
-                                        <?php $rand_cota =mt_rand(1 * 100, 10 * 100) / 100; ?>
-                                        <td><button class="odds-btn" onclick="placeBet(<?php echo $feline->id; ?>,  <?php echo $rand_cota; ?>)">
-                                        <?php echo $rand_cota; ?>
-                                       </button></td>
+                                    
+                                        <td><button class="odds-btn" onclick="placeBet( <?php echo $feline->id; ?>)">
+                                                2.0</button></td>
                                         </form>
                                     <?php }  ?>
                                     </tr>
@@ -147,7 +145,7 @@
                                         // is in this competition ?>
                                      <tr>
                                         <td> <?php echo $feline->rank ?> </td> 
-                                        <td><a href="../cat/profile/<?php echo $feline->name ?> "> <?php echo $feline->name ?> </a>  </td>
+                                        <td> <?php echo $feline->name ?> </td>
                                         <td> <?php echo $feline->breed ?> </td>
                                     </tr>
                       
@@ -191,11 +189,10 @@
                                         // echo "SUNT AICI";
                                         // is in this competition ?>
                                      <tr>
-                                        <td><a href="../cat/index" <?php echo $feline->name ?> >  </td>
+                                        <td> <?php echo $feline->name ?> </td>
                                         <td> <?php echo $feline->breed ?> </td>
                                         <?php if ($data["user"] == null) { ?>
                                         <td><button class="odds-btn" onclick="loginForBet()">
-                                    
                                                 2.0</button></td>
                                     <?php } else if ($data["user"]->username != null) { ?>
                                         <td><button class="odds-btn" onclick="placeBet()">
@@ -227,8 +224,7 @@
             <label for="betting-sum">Bet sum</label>
             <input type="number" id="betting-sum" name="betting-sum" min="1" required>
 
-            <input type="hidden" name="id_bet" id="id_bet"  value="<?php echo $feline->name ?>"> 
-            <input type="hidden" name="cota" id="cota"  value="7">        
+            <input type="hidden" name="id_bet" id="id_bet"  value="<?php echo $feline->name ?>">        
         
             <button type="submit" class="odds-btn" >Bet</button>
 
@@ -303,10 +299,9 @@
     <script src="../js/form-script.js"> </script>
 
     <script>
-        function placeBet(id, cota) {
+        function placeBet(id) {
             document.getElementById("bettingForm").style.display = "block";
             document.getElementById("id_bet").value = id;
-            document.getElementById("cota").value = cota;
         }
 
         function closeBet() {
