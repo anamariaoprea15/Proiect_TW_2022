@@ -16,7 +16,7 @@ if ( !$event_id || !is_numeric( $event_id ) ) {
  */
 //$event = get_event($event_id);
 $event = array(
-    'event_name' => 'Test Event',
+    'event_name' => 'Test Event', 
     'event_size' => 'This is a test event. This is the description.',
     'event_start' => time(),
     'event_end' => time() + 60*60*2,
