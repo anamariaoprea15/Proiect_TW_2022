@@ -37,12 +37,12 @@
     <main>
         <div class="container">
             <div class="left">
-                <div class="categories">
-                    <h3>Categories </h3>
+                <!-- <div class="categories"> -->
+                    <!-- <h3>Categories </h3>
                     <a href="race.html">Small sized cats</a> <br>
                     <a href="race.html">Medium sized cats</a> <br>
-                    <a href="race.html">Large cats</a> <br>
-                </div>
+                    <a href="race.html">Large cats</a> <br> -->
+                <!-- </div> -->
                 <div class="schedule">
                     <h3>Schedule </h3>
                     <a href="../race/schedule">Schedule</a> <br>

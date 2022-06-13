@@ -50,28 +50,12 @@ main {
     flex: 3;
 }
 
-
 a {
     text-decoration: none;
     color: white;
     line-height: 2;
 
 }
-
-td a{
-    color: #001e28;
-}
-
-td a:hover{
-    color: #6e8288;
-}
-
-td{
-    text-decoration: none;
-    color: black;
-    line-height: 2;
-}
-
 
 a:hover {
     color: #dddddd;
@@ -137,10 +121,12 @@ td, th {
 
 
 .left h3{
+    display: flex;
+    justify-content: center;
     text-decoration: underline;
 }
 
-@media screen and (max-width: 500px){
+@media screen and (max-width: 200px){
     .container{
         width: 95%;
     }
