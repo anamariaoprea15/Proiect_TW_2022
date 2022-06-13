@@ -1,186 +1,173 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+include_once "../app/models/auth.utils.php";
+include_once "../app/models/race.utils.php";
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/race-style.css">
-    <link rel="stylesheet" href="../css/header.css">
+class Race extends Controller
+{
+    public function index()
+    {
+        $user = getLoggedInUser();
 
-    <title>Cat Race</title>
-</head>
+        if ($user) {
+            // $this->view('race/connected-race', ["user" => $user]);
+            header("Location: ../race/connected_race");
+        } else {
+            header("Location: ../race/race");
+        }
+    }
+public function export(){
+    include_once "../app/views/profile/export.php";
+}
+    public function logout()
+    {
+        $_SESSION["username"] = null;
+        $this->view('home/index', []);
+        header("Location: ../home/index");
+    }
 
-<body>
+    public function connected_race()
+    {
 
-    <header>
-        <div class="header-top">
-            <div class="logo">
-                <img src="../images/logo.png" alt="logo">
-                <h3>Cat Race</h3>
-            </div>
+        $user = getLoggedInUser();
 
-            <button class="form-btn" onclick="openForm()">
-                Login</button>
-        </div>
+        $this->view('race/connected-race', ["user" => $user]);
+    }
 
+    public function race()
+    {
 
-        <nav class="top-menu">
-            <a href="../race/index"> Cat </a>
-            <a href="../race/index"> Tiger </a>
-            <a href="../race/index"> Puma </a>
-            <a href="../race/index"> Cheetah </a>
-            <a href="../race/index"> Jaguar </a>
-        </nav>
-    </header>
+        $user = getLoggedInUser();
 
-    <main>
-        <div class="container">
-            <div class="left">
-                <!-- <div class="categories"> -->
-                    <!-- <h3>Categories </h3>
-                    <a href="race.html">Small sized cats</a> <br>
-                    <a href="race.html">Medium sized cats</a> <br>
-                    <a href="race.html">Large cats</a> <br> -->
-                <!-- </div> -->
-                <div class="schedule">
-                    <h3>Schedule </h3>
-                    <a href="../race/schedule">Schedule</a> <br>
-                    <a href="../race/live_races">Races</a> <br>
+        $this->view('race/race', ["user" => $user]);
+    }
 
-                </div>
-            </div>
-            <div class="right">
-                <table>
-                    <tr>
-                        <th>Feline name</th>
-                        <th>Breed</th>
-                        <th>Betting Odds</th>
-                    </tr>
-                    <tr>
-                        <td>Felina 1</td>
-                        <td>sfinx</td>
-                        <td><button class="odds-btn" onclick="loginForBet()">
-                                2.0</button></td>
-                    </tr>
-                    <tr>
-                        <td>Felina 2</td>
-                        <td>siameza</td>
-                        <td><button class="odds-btn" onclick="loginForBet()">
-                                2.75</button></td>
-                    </tr>
-                    <tr>
-                        <td>Felina 3</td>
-                        <td>british shorthair</td>
-                        <td><button class="odds-btn" onclick="loginForBet()">
-                                21.0</button></td>
-                    </tr>
+    public function live_races()
+    {
 
-                </table>
-            </div>
-        </div>
+        $user = getLoggedInUser();
 
-    </main>
+        $past_races = getPastRaces();
+        //echo "past";
+        //var_dump($past_races);
+        // foreach($races as $race){
+        //     var_dump($race->id);
+        // }
 
-    <div class="bet-popup" id="bettingForm">
-        <form action="#" class="bet-container">
-            <h3>Place bet</h3>
-            <label for="betting-sum">Bet sum</label>
-            <input type="number" id="betting-sum" name="betting-sum" min="1" required>
+        //echo "---current---";
+        $current_races = getCurrentRaces();
+        //var_dump($current_races);
+
+        //echo "---future---";
+        $future_races = getFutureRaces();
+        //var_dump($future_races);
+
+        $felines = getAllContenstants();
+        $this->view('race/live-races', ["user" => $user, "past_races" => $past_races, "current_races" => $current_races, "future_races" => $future_races, "felines" => $felines]);
+    }
+
+    public function schedule()
+    {
+        $user = getLoggedInUser();
 
 
-            <button type="submit" class="odds-btn" onclick="loginForBet()">Bet</button>
+        $data_csv[0] = array('competition', 'start', 'finish', 'feline_name');
+
+        $current_races = getCurrentRaces();
+        $felines = getAllContenstants();
 
 
-            <button type="button" class="odds-btn" onclick="closeBet()">close</button>
-
-        </form>
-    </div>
-
-    <div class="bet-popup" id="mustLogin">
-        <div class="bet-container">
-            Your bet wasn't placed!
-            Log in and try again. <br> <br>
-
-            <button class="odds-btn" onclick="openForm()">
-                Log in for placing the bet</button>
-            <button type="button" class="odds-btn" onclick="closePopup()">close</button>
-
-        </div>
-
-    </div>
-
-
-
-    <div class="form-popup" id="formPopup">
-        <form method="POST" action="../race/login" class="form-container" id="loginContainer">
-            <h2>Login</h2>
-
-            <label for="username"><b>Username</b></label>
-            <input type="text" name="username" placeholder="Enter your username" required>
-
-            <label for="password"><b>Password</b></label>
-            <input type="password" name="password" placeholder="Enter your password" required>
-            <div class="description">
-                Don't have an account?
-                <span class="form-link" onclick="goRegister()">Register now!</span>
-            </div>
-
-
-            <button type="submit" class="btn">Login</button>
-
-
-            <button type="button" class="btn" onclick="closeForm()">Close</button>
-        </form>
-
-        <form method="POST" action="../race/register" class="form-container" id="registerContainer">
-            <h2>Sign Up</h2>
-
-            <label for="email"><b>Email</b></label>
-            <input type="email" id="email" name="email" placeholder="Enter your email" required>
-
-
-            <label for="username"><b>Username</b></label>
-            <input type="text" id="username" name="username" placeholder="Enter your username" required>
-
-            <label for="password"><b>Password</b></label>
-            <input type="password" id="password" name="password" placeholder="Enter your password" required>
-            <div class="description">
-                Already have an account?
-                <span class="form-link" onclick="goLogin()">Log in now!</span>
-            </div>
-
-
-            <button type="submit" class="btn">Sign Up</button>
-
-
-            <button type="button" class="btn" onclick="closeForm()">Close</button>
-        </form>
-    </div>
-
-
-    <script src="../js/form-script.js"> </script>
-
-    <script>
-        function placeBet() {
-            document.getElementById("bettingForm").style.display = "block";
+        foreach ($current_races as $race) {
+            foreach ($felines as $feline) {
+                if ($feline->comp_name == $race->name) {
+                    $data_csv[] = array($race->name, $race->start, $race->finish, $feline->name);
+                }
+            }
         }
 
-        function closeBet() {
-            document.getElementById("bettingForm").style.display = "none";
+        $filename = '../public/export/schedule.csv';
+
+        // open csv file for writing
+        $f = fopen($filename, 'w');
+
+        if ($f === false) {
+            die('Error opening the file ' . $filename);
         }
 
-        function loginForBet() {
-
-            document.getElementById("mustLogin").style.display = "block";
-            document.getElementById("bettingForm").style.display = "none";
+        // write each row at a time to a file
+        foreach ($data_csv as $row) {
+            fputcsv($f, $row);
         }
 
-        function closePopup() {
-            document.getElementById("mustLogin").style.display = "none";
+        // close the file
+        fclose($f);
+        $this->view('race/schedule', ["user" => $user]);
+    }
 
+    public function changePassword()
+    {
+
+        $user = getLoggedInUser();
+        if (isset($_POST['old_password']) && isset($_POST['new_password'])) {
+            updatePassword($_POST['old_password'], $_POST['new_password'], $user);
+            header("Location: ../profile/index");
         }
-    </script>
-</body>
+    }
 
-</html>
+
+    public function login()
+    {
+
+        //nu sunt setate din formular   
+        if (!isset($_POST["username"]) || !isset($_POST["password"])) {
+            $this->view('errors/bad-request', []);
+            return;
+        }
+
+        $username = $_POST["username"];
+        $password = md5($_POST["password"]);
+
+        $user = getUser($username, $password);
+
+        if (!$user) {
+            // echo "Missing account!";
+            // $this -> view('errors/wrong-credentials', []);
+        } else {
+            //login din auth-utils
+            //retine user si parola in sesiune
+            login($username, $password);
+
+            //schimba path-ul (controller)
+            header("Location: ../race/live_races");
+        }
+    }
+
+    public function register()
+    {
+        $username = $_POST["username"];
+        $email = $_POST["email"];
+        $password = md5($_POST["password"]);
+        addUser($username, $email, $password);
+        //cu mesaj a fost inregistrat cu succes !! sau verificari daca exista deja userul
+        header("Location: ../race/live_races");
+    }
+
+    public function place_bet()
+    {
+
+        //get the betting sum and the id of the contestant on which we bet
+        if (isset($_POST["betting-sum"]) and isset($_POST["id_bet"])) {
+            echo $_POST["betting-sum"];
+
+            echo $_POST["id_bet"];
+
+            echo "===" . $_POST["cota"] . "===";
+
+            $user = getLoggedInUser();
+
+            echo $user->username;
+            addToBetHistory($_POST["betting-sum"], $_POST["id_bet"], $_POST["cota"], $user->username);
+        }
+
+        //  header("Location: ../race/live_races");
+    }
+}
