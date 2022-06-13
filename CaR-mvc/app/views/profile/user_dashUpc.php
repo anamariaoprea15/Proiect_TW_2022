@@ -41,14 +41,13 @@
         <div class="container">
             <div class="left">
                 <div class="sidenav">
-                    <?php
-                                        
+                <?php
+
                     echo  "<h3>" . $data["user"]->username . " </h3>";
                     ?>
                     <h3>Sold 1500$</h3><br>
-                   
-                    <a href="user_dashUpc.html">Upcoming Bets</a>
-                    <a href="user_dashHistory.html">History</a>
+                    <a href="../profile/user_dashUpc">Upcoming Bets</a>
+                    <a href="../profile/user_dashHistory">History</a>
                     <button class="form-btn1" onclick="openForm()">
                         Settings</button>
                 </div>
@@ -61,11 +60,10 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>Feline name</th>
-                            <th>Breed</th>
-                            <th>Date</th>
-                            <th>Time</th>
-                            <th>Money</th>
+                        <th>Feline name</th>
+                        <th>Competition</th>
+                        <th>Date</th>
+                        <th>Cote</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -73,22 +71,25 @@
                         $servername = "localhost";
                         $username = "root";
                         $password = "";
-                        $database = "mystore";
+                        $database = "catrace";
 
                         $connection = new mysqli($servername,$username,$password,$database);
             
                         if($connection->connect_error){
                             die("Connection failed: " .  $connection->connect_error);
                         }
-                        $sql = "SELECT * FROM bets WHERE (Date_ > CURDATE() or (Date_ = CURDATE() and Time_ > CURTIME()))";
-                        $result = $connection->query($sql);
+                        $user = $data["user"]->username;
+                        $queryStmt = $connection->prepare('Select * from betting_history where(date < CURDATE())');
+
+                        $queryStmt->execute();
+                        $result = $queryStmt->get_result();
+                        $queryStmt->close();
                         while($row = $result->fetch_assoc()){
                             echo"<tr>
                             <td>" . $row["feline_name"] . "</td>
-                            <td>" . $row["Breed"] . "</td>
-                            <td>" . $row["Date_"] . "</td>
-                            <td>" . $row["Time_"] . "</td>
-                            <td>" . $row["Money"] . "</td>
+                            <td>" . $row["comp_name"] . "</td>
+                            <td>" . $row["date"] . "</td>
+                            <td>" . $row["cota"] . "</td>
                             </tr>";
                         }
 
