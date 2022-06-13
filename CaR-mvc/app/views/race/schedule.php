@@ -64,7 +64,7 @@
                 <a href="path_to_html_file" class="btn" download="schedule.html">Download HTML</a>
                 <a href="path_to_md_file" class="btn" download="schedule.md">Download Markdown</a>
                 <a href="../export/report.xml" class="btn" download="schedule.xml">Download XML</a>
-                <a href="path_to_ics_file" class="btn" download="schedule.ics">Download iCalendar</a>
+                <a href="../export/calendar.ics" class="btn" download="schedule.ics">Download iCalendar</a>
 
             </div>
         </div>

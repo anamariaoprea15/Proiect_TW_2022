@@ -101,6 +101,9 @@ class Race extends Controller
 
         // generate xml 
         generateXML();
+
+        //generate iCalendar
+        generateICalendar();
             
         $this->view('race/schedule', ["user" => $user]);
     }
@@ -170,6 +173,6 @@ class Race extends Controller
             addToBetHistory($_POST["betting-sum"], $_POST["id_bet"], $_POST["cota"], $user->username);
         }
 
-        //  header("Location: ../race/live_races");
+        header("Location: ../race/live_races");
     }
 }

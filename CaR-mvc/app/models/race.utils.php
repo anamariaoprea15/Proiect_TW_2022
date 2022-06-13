@@ -225,3 +225,39 @@ function generateXML()
         }
     }
 }
+
+
+function generateICalendar(){
+
+    class ICS {
+        var $data;
+        var $name;
+        function ICS($start,$end,$name,$type) {
+            $this->name = $name;
+            $this->data = "BEGIN:VCALENDAR\n
+            VERSION:2.0\n
+            METHOD:PUBLISH\n
+            BEGIN:VEVENT\n
+            DTSTART:".date("Ymd\THis\Z",strtotime($start))."\n
+            DTEND:".date("Ymd\THis\Z",strtotime($end))."\n
+            TRANSP: OPAQUE\n
+            SEQUENCE:0\n
+            UID:\n
+            DTSTAMP:".date("Ymd\THis\Z")."\n
+            SUMMARY:".$name."\
+            nDESCRIPTION:".$type."\n
+            PRIORITY:1\n
+            CLASS:PUBLIC\n
+            BEGIN:VALARM\n
+            TRIGGER:-PT10080M\nACTION:DISPLAY\nDESCRIPTION:Reminder\nEND:VALARM\nEND:VEVENT\nEND:VCALENDAR\n";
+        }
+        function save() {
+            file_put_contents("../public/export/calendar.ics",$this->data);
+        }
+    }
+
+    $event = new ICS("2022-06-13 09:00","2022-06-13 10:00","Test Event","type");
+    $event->save();
+
+
+}
