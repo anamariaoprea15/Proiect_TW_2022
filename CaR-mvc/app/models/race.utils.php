@@ -151,8 +151,6 @@ function getAllContenstants()
 
 function getFelineByID($id)
 {
-
-
     //query baza de date
     global $conn;
 
@@ -266,9 +264,6 @@ function generateICalendar()
 
 function updatePosition($feline_name, $comp_name, $rank)
 {
-    echo $rank . " - ";
-    echo $feline_name . " - ";
-    echo $comp_name . " - ";
     global $conn;
 
     $sql = "UPDATE felines SET rank=? WHERE name like ? and comp_name like ?";
@@ -278,8 +273,21 @@ function updatePosition($feline_name, $comp_name, $rank)
     $stmt->close();
 }
 
+
+function updateResult($race_id)
+{
+    global $conn;
+
+    $sql = "UPDATE competitions SET result=TRUE WHERE id=?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $race_id);
+    $stmt->execute();
+    $stmt->close();
+}
+
 function racePositions($race)
 {
+    updateResult($race->id);
 
     $felines = getAllContenstants();
     $count = 0;
@@ -305,4 +313,24 @@ function racePositions($race)
             unset($array[$value]);
         }
     }
+}
+
+function isFinished($race){
+
+       global $conn;
+
+       $queryStmt = $conn->prepare('Select result from competitions where id = ?');
+       $queryStmt->bind_param('i', $race->id); //i= int value
+   
+       $queryStmt->execute();
+       $results = $queryStmt->get_result();
+       $queryStmt->close();
+   
+       if ($results->num_rows == 1) {
+           $row = $results->fetch_assoc();
+           
+           return $row["result"];
+        }
+       return null;
+
 }

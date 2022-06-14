@@ -6,7 +6,7 @@ class Competition {
     public $size;
     public $start;
     public $finish;
-    
+    public $result;
 
     public function __construct($id, $name, $type, $size, $start, $finish)
     {
@@ -16,6 +16,7 @@ class Competition {
         $this -> size = $size;
         $this -> start = $start;
         $this -> finish = $finish;
+        $this -> result = false;
     }
 }
 

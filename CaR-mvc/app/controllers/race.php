@@ -48,7 +48,8 @@ class Race extends Controller
         $past_races = getPastRaces();
 
         foreach ($past_races as $race) {
-            racePositions($race);
+            if(isFinished($race) == false)
+                racePositions($race);
         }
      
         //echo "---current---";
