@@ -175,4 +175,8 @@ class Race extends Controller
 
         header("Location: ../race/live_races");
     }
+
+    public function generateHTML(){
+        include_once "../app/views/profile/export.php";
+    }
 }
