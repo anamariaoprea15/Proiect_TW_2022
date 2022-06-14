@@ -44,15 +44,17 @@ class Race extends Controller
 
         $user = getLoggedInUser();
 
-        $past_races = getPastRaces();
         //echo "past";
-        //var_dump($past_races);
-        // foreach($races as $race){
-        //     var_dump($race->id);
-        // }
+        $past_races = getPastRaces();
 
+        foreach ($past_races as $race) {
+            racePositions($race);
+        }
+     
         //echo "---current---";
         $current_races = getCurrentRaces();
+
+
         //var_dump($current_races);
 
         //echo "---future---";
@@ -60,6 +62,7 @@ class Race extends Controller
         //var_dump($future_races);
 
         $felines = getAllContenstants();
+
         $this->view('race/live-races', ["user" => $user, "past_races" => $past_races, "current_races" => $current_races, "future_races" => $future_races, "felines" => $felines]);
     }
 
@@ -104,7 +107,7 @@ class Race extends Controller
 
         //generate iCalendar
         generateICalendar();
-            
+
         $this->view('race/schedule', ["user" => $user]);
     }
 
@@ -176,7 +179,8 @@ class Race extends Controller
         header("Location: ../race/live_races");
     }
 
-    public function generateHTML(){
+    public function generateHTML()
+    {
         include_once "../app/views/profile/export.php";
     }
 }

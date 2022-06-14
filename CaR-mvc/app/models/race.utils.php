@@ -227,37 +227,82 @@ function generateXML()
 }
 
 
-function generateICalendar(){
+function generateICalendar()
+{
 
-    class ICS {
+    class ICS
+    {
         var $data;
         var $name;
-        function ICS($start,$end,$name,$type) {
+        function ICS($start, $end, $name, $type)
+        {
             $this->name = $name;
             $this->data = "BEGIN:VCALENDAR\n
             VERSION:2.0\n
             METHOD:PUBLISH\n
             BEGIN:VEVENT\n
-            DTSTART:".date("Ymd\THis\Z",strtotime($start))."\n
-            DTEND:".date("Ymd\THis\Z",strtotime($end))."\n
+            DTSTART:" . date("Ymd\THis\Z", strtotime($start)) . "\n
+            DTEND:" . date("Ymd\THis\Z", strtotime($end)) . "\n
             TRANSP: OPAQUE\n
             SEQUENCE:0\n
             UID:\n
-            DTSTAMP:".date("Ymd\THis\Z")."\n
-            SUMMARY:".$name."\
-            nDESCRIPTION:".$type."\n
+            DTSTAMP:" . date("Ymd\THis\Z") . "\n
+            SUMMARY:" . $name . "\
+            nDESCRIPTION:" . $type . "\n
             PRIORITY:1\n
             CLASS:PUBLIC\n
             BEGIN:VALARM\n
             TRIGGER:-PT10080M\nACTION:DISPLAY\nDESCRIPTION:Reminder\nEND:VALARM\nEND:VEVENT\nEND:VCALENDAR\n";
         }
-        function save() {
-            file_put_contents("../public/export/calendar.ics",$this->data);
+        function save()
+        {
+            file_put_contents("../public/export/calendar.ics", $this->data);
         }
     }
 
-    $event = new ICS("2022-06-13 09:00","2022-06-13 10:00","Test Event","type");
+    $event = new ICS("2022-06-13 09:00", "2022-06-13 10:00", "Test Event", "type");
     $event->save();
+}
 
+function updatePosition($feline_name, $comp_name, $rank)
+{
+    echo $rank . " - ";
+    echo $feline_name . " - ";
+    echo $comp_name . " - ";
+    global $conn;
 
+    $sql = "UPDATE felines SET rank=? WHERE name like ? and comp_name like ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("iss", $rank, $feline_name, $comp_name);
+    $stmt->execute();
+    $stmt->close();
+}
+
+function racePositions($race)
+{
+
+    $felines = getAllContenstants();
+    $count = 0;
+
+    foreach ($felines as $feline) {
+        if ($feline->comp_name == $race->name) { //feline is in finished competition
+            //then compute place
+            $count++;
+        }
+    }
+
+    // echo "count=" . $count;
+    $array = range(1, $count);
+
+    foreach ($felines as $feline) {
+        if ($feline->comp_name == $race->name) {
+            $value = array_rand($array);
+           // echo "value = " . $array[$value] . "\n";
+            $feline->rank = $array[$value];
+          //  echo "feline rank =  " . $feline->rank;
+            // update database
+            updatePosition($feline->name, $feline->comp_name, $feline->rank);
+            unset($array[$value]);
+        }
+    }
 }
