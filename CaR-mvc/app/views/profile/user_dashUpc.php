@@ -64,35 +64,37 @@
                         <th>Competition</th>
                         <th>Date</th>
                         <th>Cote</th>
+                        <th>Money</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php
+                    <?php
                         $servername = "localhost";
                         $username = "root";
                         $password = "";
                         $database = "catrace";
 
-                        $connection = new mysqli($servername,$username,$password,$database);
-            
-                        if($connection->connect_error){
+                        $connection = new mysqli($servername, $username, $password, $database);
+
+                        if ($connection->connect_error) {
                             die("Connection failed: " .  $connection->connect_error);
                         }
                         $user = $data["user"]->username;
-                        $queryStmt = $connection->prepare('Select * from betting_history where(date < CURDATE())');
+                        $queryStmt = $connection->prepare('Select * from betting_history where(date >= CURDATE() and username = ?)');
+                        $queryStmt->bind_param('s', $user);
 
                         $queryStmt->execute();
                         $result = $queryStmt->get_result();
                         $queryStmt->close();
-                        while($row = $result->fetch_assoc()){
-                            echo"<tr>
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<tr>
                             <td>" . $row["feline_name"] . "</td>
                             <td>" . $row["comp_name"] . "</td>
                             <td>" . $row["date"] . "</td>
                             <td>" . $row["cota"] . "</td>
+                            <td>" . $row["bet_sum"] . "</td>
                             </tr>";
                         }
-
                         ?>
                     </tbody>
                 </table>
