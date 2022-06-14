@@ -109,6 +109,8 @@ class Race extends Controller
         //generate iCalendar
         generateICalendar();
 
+        include_once  "../app/views/race/mark.php";
+
         $this->view('race/schedule', ["user" => $user]);
     }
 

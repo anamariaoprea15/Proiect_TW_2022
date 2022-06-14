@@ -62,10 +62,10 @@
                
                 <a href="../export/schedule.csv" class="btn" download="schedule.csv">Download CSV</a>
                 <a href="../race/generateHTML" class="btn" download="schedule.html">Download HTML</a>
-                <a href="path_to_md_file" class="btn" download="schedule.md">Download Markdown</a>
+                <a href="../export/mark.md" class="btn" download="markdown.md">Download Markdown</a>
                 <a href="../export/report.xml" class="btn" download="schedule.xml">Download XML</a>
                 <a href="../export/calendar.ics" class="btn" download="schedule.ics">Download iCalendar</a>
-
+                <!-- text/javascript" src="table-converter.js -->
             </div>
         </div>
 
