@@ -1,2 +1,2 @@
-competition|start|finish|feline_name|
---------------|--------------|--------------|--------------
+|competition|start|finish|feline_name|
+|------------|------|-------|---------|
