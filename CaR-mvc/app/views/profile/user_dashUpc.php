@@ -79,7 +79,8 @@
                             die("Connection failed: " .  $connection->connect_error);
                         }
                         $user = $data["user"]->username;
-                        $queryStmt = $connection->prepare('Select * from betting_history where(date < CURDATE())');
+                        $queryStmt = $connection->prepare('Select * from betting_history where(date >= CURDATE() and username = ?)');
+                        $queryStmt->bind_param('s', $user);
 
                         $queryStmt->execute();
                         $result = $queryStmt->get_result();
