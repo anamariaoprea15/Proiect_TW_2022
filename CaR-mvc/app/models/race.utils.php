@@ -232,34 +232,32 @@ function generateICalendar()
     {
         var $data;
         var $name;
-        function ICS($start, $end, $name, $type)
+        function __construct($start, $end, $name)
         {
             $this->name = $name;
-            $this->data = "BEGIN:VCALENDAR\n
-            VERSION:2.0\n
-            METHOD:PUBLISH\n
-            BEGIN:VEVENT\n
-            DTSTART:" . date("Ymd\THis\Z", strtotime($start)) . "\n
-            DTEND:" . date("Ymd\THis\Z", strtotime($end)) . "\n
-            TRANSP: OPAQUE\n
-            SEQUENCE:0\n
-            UID:\n
-            DTSTAMP:" . date("Ymd\THis\Z") . "\n
-            SUMMARY:" . $name . "\
-            nDESCRIPTION:" . $type . "\n
-            PRIORITY:1\n
-            CLASS:PUBLIC\n
-            BEGIN:VALARM\n
-            TRIGGER:-PT10080M\nACTION:DISPLAY\nDESCRIPTION:Reminder\nEND:VALARM\nEND:VEVENT\nEND:VCALENDAR\n";
+            $this->data = "BEGIN:VCALENDAR\nVERSION:2.0\nMETHOD:PUBLISH\nBEGIN:VEVENT\nDTSTART:" . date($start) . "\nDTEND:" . date($end) . "\nORGANIZER;CN=ashish.bigbos@gmail.com:mailto:ashish.bigbos@gmail.com\nTRANSP: OPAQUE\nSEQUENCE:0\nUID:\nDTSTAMP:" . date("Ymd") . "\nSUMMARY:" . $name . "\nPRIORITY:5\nCLASS:PUBLIC\nBEGIN:VALARM\nTRIGGER:-PT10M\nACTION:DISPLAY\nDESCRIPTION:Reminder\nEND:VALARM\nEND:VEVENT\nEND:VCALENDAR\n";
         }
-        function save()
+        public function save()
         {
-            file_put_contents("../public/export/calendar.ics", $this->data);
+            file_put_contents("../public/export/calendar.ics", $this->data, FILE_APPEND);
         }
     }
 
-    $event = new ICS("2022-06-13 09:00", "2022-06-13 10:00", "Test Event", "type");
-    $event->save();
+
+    // $start_time = "2022-06-16";
+    // $end_time = "2022-06-17";
+    // $title = "Example Event";
+
+    // $event = new ICS($start_time, $end_time, $title);
+    // $event->save();
+
+
+    $future_races = getFutureRaces();
+    foreach ($future_races as $race) {
+
+        $event = new ICS($race->start, $race->finish, $race->name);
+        $event->save();
+    }
 }
 
 function updatePosition($feline_name, $comp_name, $rank)
@@ -305,9 +303,9 @@ function racePositions($race)
     foreach ($felines as $feline) {
         if ($feline->comp_name == $race->name) {
             $value = array_rand($array);
-           // echo "value = " . $array[$value] . "\n";
+            // echo "value = " . $array[$value] . "\n";
             $feline->rank = $array[$value];
-          //  echo "feline rank =  " . $feline->rank;
+            //  echo "feline rank =  " . $feline->rank;
             // update database
             updatePosition($feline->name, $feline->comp_name, $feline->rank);
             unset($array[$value]);
@@ -315,22 +313,22 @@ function racePositions($race)
     }
 }
 
-function isFinished($race){
+function isFinished($race)
+{
 
-       global $conn;
+    global $conn;
 
-       $queryStmt = $conn->prepare('Select result from competitions where id = ?');
-       $queryStmt->bind_param('i', $race->id); //i= int value
-   
-       $queryStmt->execute();
-       $results = $queryStmt->get_result();
-       $queryStmt->close();
-   
-       if ($results->num_rows == 1) {
-           $row = $results->fetch_assoc();
-           
-           return $row["result"];
-        }
-       return null;
+    $queryStmt = $conn->prepare('Select result from competitions where id = ?');
+    $queryStmt->bind_param('i', $race->id); //i= int value
 
+    $queryStmt->execute();
+    $results = $queryStmt->get_result();
+    $queryStmt->close();
+
+    if ($results->num_rows == 1) {
+        $row = $results->fetch_assoc();
+
+        return $row["result"];
+    }
+    return null;
 }

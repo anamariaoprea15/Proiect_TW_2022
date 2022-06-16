@@ -66,7 +66,6 @@
 
                 <div class="content">
 
-
                     <?php
                     $current_races = $data["current_races"];
                     if ($current_races != null) {
@@ -75,54 +74,56 @@
                             echo "<p>  [" . $race->start . "] -  [" . $race->finish . "] </p>";
 
                     ?>
-                    <table>
-                        <tr>
-                            <th>Feline name</th>
-                            <th>Breed</th>
-                            <th>Betting Odds</th>
-                        </tr>
-                        <tr>
-                    <?php
-                            $felines = $data["felines"];
-                            if ($felines != null) {
-                                foreach ($felines as $feline){
-                                    if($feline->comp_name == $race->name){
-                                        // echo "SUNT AICI";
-                                        // is in this competition ?>
-                                     <tr>
-                                        <td> <?php echo $feline->name ?> </td>
-                                        <td> <?php echo $feline->breed ?> </td>
-                                       
-                                         <?php if ($data["user"] == null) { ?>
+                            <table>
+                                <tr>
+                                    <th>Feline name</th>
+                                    <th>Breed</th>
+                                    <th>Betting Odds</th>
+                                </tr>
+                                <tr>
+                                    <?php
+                                    $felines = $data["felines"];
+                                    if ($felines != null) {
+                                        foreach ($felines as $feline) {
+                                            if ($feline->comp_name == $race->name) {
+                                                // echo "SUNT AICI";
+                                                // is in this competition 
+                                    ?>
+                                <tr>
+                                    <td><a href="../cat/profile/<?php echo $feline->name ?> "> <?php echo $feline->name ?> </a> </td>
+                                    <td> <?php echo $feline->breed ?> </td>
+
+                                    <?php $rand_cota = mt_rand(1 * 100, 10 * 100) / 100; ?>
+                                    <?php if ($data["user"] == null) { ?>
                                         <td><button class="odds-btn" onclick="loginForBet()">
-                                        <?php echo rand(1,10); ?>
-                                                </button></td>
+                                                <?php echo $rand_cota; ?>
+                                            </button></td>
                                     <?php } else if ($data["user"]->username != null) { ?>
-                                        
-                                        <?php $rand_cota =mt_rand(1 * 100, 10 * 100) / 100; ?>
+
+
                                         <td><button class="odds-btn" onclick="placeBet(<?php echo $feline->id; ?>,  <?php echo $rand_cota; ?>)">
-                                        <?php echo $rand_cota; ?>
-                                       </button></td>
+                                                <?php echo $rand_cota; ?>
+                                            </button></td>
                                         </form>
                                     <?php }  ?>
-                                    </tr>
-                      
+                                </tr>
+
                     <?php
+                                            }
+                                        }
                                     }
-                                }
-                            } 
                     ?>
-                    </table>
+                            </table>
                     <?php
                         }
                     } ?>
-                    
+
                 </div>
 
 
                 <button type="button" class="collapsible">See past races</button>
 
-                 <div class="content">
+                <div class="content">
                     <?php
                     $past_races = $data["past_races"];
                     if ($past_races != null) {
@@ -131,36 +132,37 @@
                             echo "<p>  [" . $race->start . "] -  [" . $race->finish . "] </p>";
 
                     ?>
-                    <table>
-                        <tr>
-                            <th>Place</th>
-                            <th>Feline name</th>
-                            <th>Breed</th>
-                        </tr>
-                        <tr>
+                            <table>
+                                <tr>
+                                    <th>Place</th>
+                                    <th>Feline name</th>
+                                    <th>Breed</th>
+                                </tr>
+                                <tr>
+                                    <?php
+                                    $felines = $data["felines"];
+                                    if ($felines != null) {
+                                        foreach ($felines as $feline) {
+                                            if ($feline->comp_name == $race->name) {
+                                                // echo "SUNT AICI";
+                                                // is in this competition 
+                                    ?>
+                                <tr>
+                                    <td> <?php echo $feline->rank ?> </td>
+                                    <td><a href="../cat/profile/<?php echo $feline->name ?> "> <?php echo $feline->name ?> </a> </td>
+                                    <td> <?php echo $feline->breed ?> </td>
+                                </tr>
+
                     <?php
-                            $felines = $data["felines"];
-                            if ($felines != null) {
-                                foreach ($felines as $feline){
-                                    if($feline->comp_name == $race->name){
-                                        // echo "SUNT AICI";
-                                        // is in this competition ?>
-                                     <tr>
-                                        <td> <?php echo $feline->rank ?> </td> 
-                                        <td><a href="../cat/profile/<?php echo $feline->name ?> " > <?php echo $feline->name ?> </a>  </td>
-                                        <td> <?php echo $feline->breed ?> </td>
-                                    </tr>
-                      
-                    <?php
+                                            }
+                                        }
                                     }
-                                }
-                            } 
                     ?>
-                    </table>
+                            </table>
                     <?php
                         }
                     } ?>
-                    
+
                 </div>
 
 
@@ -176,46 +178,52 @@
                             echo "<p>  [" . $race->start . "] -  [" . $race->finish . "] </p>";
 
                     ?>
-                    <table>
-                        <tr>
-                           <th>Feline name</th>
-                            <th>Breed</th>
-                            <th>Betting Odds</th>
-                        </tr>
-                        <tr>
-                    <?php
-                            $felines = $data["felines"];
-                            if ($felines != null) {
-                                foreach ($felines as $feline){
-                                    if($feline->comp_name == $race->name){
-                                        // echo "SUNT AICI";
-                                        // is in this competition ?>
-                                     <tr>
-                                        <td><a href="../cat/index" <?php echo $feline->name ?> >  </td>
-                                        <td> <?php echo $feline->breed ?> </td>
-                                        <?php if ($data["user"] == null) { ?>
-                                        <td><button class="odds-btn" onclick="loginForBet()">
-                                    
-                                                2.0</button></td>
-                                    <?php } else if ($data["user"]->username != null) { ?>
-                                        <td><button class="odds-btn" onclick="placeBet()">
-                                                2.0</button></td>
+                            <table>
+                                <tr>
+                                    <th>Feline name</th>
+                                    <th>Breed</th>
+                                    <th>Betting Odds</th>
+                                </tr>
+                                <tr>
+                                    <?php
+                                    $felines = $data["felines"];
+                                    if ($felines != null) {
+                                        foreach ($felines as $feline) {
+                                            if ($feline->comp_name == $race->name) {
+                                                // echo "SUNT AICI";
+                                                // is in this competition 
+                                    ?>
+                                <tr>
+                                    <td><a href="../cat/profile/<?php echo $feline->name ?> "> <?php echo $feline->name ?> </a> </td>
+                                    <td> <?php echo $feline->breed ?> </td>
 
+                                    <?php $rand_cota = mt_rand(1 * 100, 10 * 100) / 100; ?>
+                                    <?php if ($data["user"] == null) { ?>
+                                        <td><button class="odds-btn" onclick="loginForBet()">
+                                                <?php echo $rand_cota; ?>
+                                            </button></td>
+                                    <?php } else if ($data["user"]->username != null) { ?>
+
+
+                                        <td><button class="odds-btn" onclick="placeBet(<?php echo $feline->id; ?>,  <?php echo $rand_cota; ?>)">
+                                                <?php echo $rand_cota; ?>
+                                            </button></td>
+                                        </form>
                                     <?php }  ?>
-                                    </tr>
-                      
+                                </tr>
+
                     <?php
+                                            }
+                                        }
                                     }
-                                }
-                            } 
                     ?>
-                    </table>
+                            </table>
                     <?php
                         }
                     } ?>
-                    
+
                 </div>
-               
+
             </div>
         </div>
 
@@ -227,10 +235,10 @@
             <label for="betting-sum">Bet sum</label>
             <input type="number" id="betting-sum" name="betting-sum" min="1" required>
 
-            <input type="hidden" name="id_bet" id="id_bet"  value="<?php echo $feline->name ?>"> 
-            <input type="hidden" name="cota" id="cota"  value="7">        
-        
-            <button type="submit" class="odds-btn" >Bet</button>
+            <input type="hidden" name="id_bet" id="id_bet" value="<?php echo $feline->name ?>">
+            <input type="hidden" name="cota" id="cota" value="7">
+
+            <button type="submit" class="odds-btn">Bet</button>
 
 
             <button type="button" class="odds-btn" onclick="closeBet()">close</button>

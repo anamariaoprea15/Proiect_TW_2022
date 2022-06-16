@@ -1,2 +1,5 @@
 |competition|start|finish|feline_name|
 |------------|------|-------|---------|
+|comp1| 2022-06-09|2022-06-16|feline1|
+|comp1| 2022-06-09|2022-06-16|jaguar1|
+|comp1| 2022-06-09|2022-06-16|Felinaaa|
