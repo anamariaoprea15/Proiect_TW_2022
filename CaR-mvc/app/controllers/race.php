@@ -10,7 +10,7 @@ class Race extends Controller
 
         if ($user) {
             // $this->view('race/connected-race', ["user" => $user]);
-            header("Location: ../race/connected_race");
+            header("Location: ../race/race");
         } else {
             header("Location: ../race/race");
         }
@@ -35,8 +35,9 @@ class Race extends Controller
     {
 
         $user = getLoggedInUser();
+        $felines = getAllContenstants();
 
-        $this->view('race/race', ["user" => $user]);
+        $this->view('race/race', ["user" => $user, "felines" => $felines]);
     }
 
     public function live_races()

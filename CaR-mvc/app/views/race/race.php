@@ -38,7 +38,7 @@
         <div class="container">
             <div class="left">
                 <!-- <div class="categories"> -->
-                    <!-- <h3>Categories </h3>
+                <!-- <h3>Categories </h3>
                     <a href="race.html">Small sized cats</a> <br>
                     <a href="race.html">Medium sized cats</a> <br>
                     <a href="race.html">Large cats</a> <br> -->
@@ -54,29 +54,35 @@
                 <table>
                     <tr>
                         <th>Feline name</th>
+                        <th>Type</th>
+                        <th>Size</th>
                         <th>Breed</th>
-                        <th>Betting Odds</th>
+                        <th>Competition</th>
                     </tr>
                     <tr>
-                        <td>Felina 1</td>
-                        <td>sfinx</td>
-                        <td><button class="odds-btn" onclick="loginForBet()">
-                                2.0</button></td>
-                    </tr>
+                        <?php
+                        $felines = $data["felines"];
+                        if ($felines != null) {
+                            foreach ($felines as $feline) {
+                                if ($feline->comp_name) {
+                                    // echo "SUNT AICI";
+                                    // is in this competition 
+                        ?>
                     <tr>
-                        <td>Felina 2</td>
-                        <td>siameza</td>
-                        <td><button class="odds-btn" onclick="loginForBet()">
-                                2.75</button></td>
-                    </tr>
-                    <tr>
-                        <td>Felina 3</td>
-                        <td>british shorthair</td>
-                        <td><button class="odds-btn" onclick="loginForBet()">
-                                21.0</button></td>
+                        <td><a href="../cat/profile/<?php echo $feline->name ?> "> <?php echo $feline->name; ?> </a> </td>
+                        <td> <?php echo $feline->type; ?> </td>
+                        <td> <?php echo $feline->size; ?> </td>
+                        <td> <?php echo $feline->breed; ?> </td>
+                        <td> <?php echo $feline->comp_name; ?> </td>
                     </tr>
 
+        <?php
+                                }
+                            }
+                        }
+        ?>
                 </table>
+
             </div>
         </div>
 
