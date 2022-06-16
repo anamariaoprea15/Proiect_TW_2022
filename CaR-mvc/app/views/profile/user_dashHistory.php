@@ -63,9 +63,11 @@
                         <tr>
                             <th>Feline name</th>
                             <th>Competition</th>
+                            <th>Rank</th>
                             <th>Date</th>
                             <th>Cote</th>
                             <th>Money</th>
+                            <th>Earnings</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -88,12 +90,27 @@
                         $result = $queryStmt->get_result();
                         $queryStmt->close();
                         while ($row = $result->fetch_assoc()) {
+                            $queryStmt_f = $connection->prepare('Select * from felines where (comp_name=? and name = ?)');
+                            $queryStmt_f->bind_param('ss', $row["comp_name"], $row["feline_name"]);
+
+                            $queryStmt_f->execute();
+                            $result_f = $queryStmt_f->get_result();
+                            $queryStmt_f->close();
+                            $row_f = $result_f->fetch_assoc();
+
+                            $earning = $row["cota"] * $row["bet_sum"];
+                            
+                            if ($row_f["rank"] != 1) {
+                                $earning = 0;
+                            }
                             echo "<tr>
                             <td>" . $row["feline_name"] . "</td>
                             <td>" . $row["comp_name"] . "</td>
+                            <td>" . $row_f["rank"] . "</td>
                             <td>" . $row["date"] . "</td>
                             <td>" . $row["cota"] . "</td>
                             <td>" . $row["bet_sum"] . "</td>
+                            <td>" . $earning . "</td>
                             </tr>";
                         }
                         ?>
