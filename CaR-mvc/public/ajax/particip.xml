@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<participants>
+   <participant>
+      <username>busaco</username>
+      <email>busaco@yahoo.com</email>
+   </participant>
+   <participant>
+      <username>admin</username>
+      <email>admin@gmail.com/</email>
+   </participant>
+   <participant>
+      <username>andreea</username>
+      <email>andreea@gmail.com</email>
+   </participant>
+   <participant>
+      <username>tux</username>
+      <email>tux@yahoo.ro/</email>
+   </participant>
+</participants>
+
+<!-- id,username,email,password,credit -->
