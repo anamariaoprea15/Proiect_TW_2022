@@ -16,7 +16,9 @@
         <div class="header-top">
             <div class="logo">
                 <img src="../images/logo.png" alt="logo">
-                <h3>Cat Race</h3>
+                <a class="btn" href="../race/live_races"><h3>Cat Race</h3></a>
+                <!-- <a class="btn" href="../public/home"><h3>Cat Race</h3></a> -->
+
             </div>
 
             <button class="form-btn" onclick="openForm()">
@@ -25,11 +27,11 @@
 
 
         <nav class="top-menu">
-            <a href="../race/index"> Cat </a>
-            <a href="../race/index"> Tiger </a>
-            <a href="../race/index"> Puma </a>
-            <a href="../race/index"> Cheetah </a>
-            <a href="../race/index"> Jaguar </a>
+            <a href="../race/race/cat"> Cat </a>
+            <a href="../race/race/tiger"> Tiger </a>
+            <a href="../race/race/puma"> Puma </a>
+            <a href="../race/race/cheetah"> Cheetah </a>
+            <a href="../race/race/jaguar"> Jaguar </a>
         </nav>
     </header>
 
