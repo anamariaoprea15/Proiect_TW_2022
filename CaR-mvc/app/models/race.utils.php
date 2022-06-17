@@ -281,6 +281,40 @@ function updateResult($race_id)
     $stmt->bind_param("i", $race_id);
     $stmt->execute();
     $stmt->close();
+
+}
+
+function addCredit($username, $cota, $bet_sum){
+
+    global $conn;
+    
+    $updCredit = getCredit($username) + $cota * $bet_sum;
+
+    $sql = "UPDATE users SET credit=? WHERE username like ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("is", $updCredit, $username);
+    $stmt->execute();
+    $stmt->close();
+
+}
+
+function updateWinners($winner, $race_name){
+ 
+    
+     //query baza de date
+     global $conn;
+
+     $queryStmt = $conn->prepare('Select * from betting_history where feline_name = ? and comp_name = ?');
+     $queryStmt->bind_param('ss', $winner, $race_name); //i= int value
+ 
+     $queryStmt->execute();
+     $results = $queryStmt->get_result();
+     $queryStmt->close();
+ 
+     if ($results->num_rows > 0) {
+         $row = $results->fetch_assoc();
+         addCredit($row["username"], $row["cota"], $row["bet_sum"]);
+     }
 }
 
 function racePositions($race)
@@ -299,7 +333,7 @@ function racePositions($race)
 
     // echo "count=" . $count;
     $array = range(1, $count);
-
+    $winner = null;
     foreach ($felines as $feline) {
         if ($feline->comp_name == $race->name) {
             $value = array_rand($array);
@@ -307,6 +341,10 @@ function racePositions($race)
             $feline->rank = $array[$value];
             //  echo "feline rank =  " . $feline->rank;
             // update database
+            if($feline->rank == 1){
+                $winner = $feline;
+                updateWinners($winner->name, $race->name);
+            }
             updatePosition($feline->name, $feline->comp_name, $feline->rank);
             unset($array[$value]);
         }
