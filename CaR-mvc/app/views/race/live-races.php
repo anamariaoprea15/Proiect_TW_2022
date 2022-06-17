@@ -17,7 +17,7 @@
         <div class="header-top">
             <div class="logo">
                 <img src="../images/logo.png" alt="logo">
-                <h3>Cat Race</h3>
+                <a class="btn" href="../public/home"><h3>Cat Race</h3></a>
             </div>
 
             <?php if ($data["user"] == null) { ?>

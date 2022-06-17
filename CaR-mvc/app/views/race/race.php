@@ -17,7 +17,7 @@
         <div class="header-top">
             <div class="logo">
                 <img src="../../images/logo.png" alt="logo">
-                <h3>Cat Race</h3>
+                 <a class="btn" href="../public/home"><h3>Cat Race</h3></a>
             </div>
 
             <?php if ($data["user"] == null) { ?>
@@ -47,12 +47,6 @@
     <main>
         <div class="container">
             <div class="left">
-                <!-- <div class="categories"> -->
-                <!-- <h3>Categories </h3>
-                    <a href="race.html">Small sized cats</a> <br>
-                    <a href="race.html">Medium sized cats</a> <br>
-                    <a href="race.html">Large cats</a> <br> -->
-                <!-- </div> -->
                 <div class="schedule">
                     <h3>Schedule </h3>
                     <a href="../../race/schedule">Schedule</a> <br>
