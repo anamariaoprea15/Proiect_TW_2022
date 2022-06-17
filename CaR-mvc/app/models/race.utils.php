@@ -288,11 +288,11 @@ function addCredit($username, $cota, $bet_sum){
 
     global $conn;
     
-    $updCredit = getCredit() + $cota * $bet_sum;
+    $updCredit = getCredit($username) + $cota * $bet_sum;
 
     $sql = "UPDATE users SET credit=? WHERE username like ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("is", $updCredit, $user->username);
+    $stmt->bind_param("is", $updCredit, $username);
     $stmt->execute();
     $stmt->close();
 
@@ -343,7 +343,7 @@ function racePositions($race)
             // update database
             if($feline->rank == 1){
                 $winner = $feline;
-                updateWinners($winner, $race->name);
+                updateWinners($winner->name, $race->name);
             }
             updatePosition($feline->name, $feline->comp_name, $feline->rank);
             unset($array[$value]);

@@ -25,8 +25,8 @@
                     Login</button>
             <?php } else if ($data["user"]->username != null) { ?>
                 <div>
-                    <a href="../profile/index" class="form-btn">Profile</a>
-                    <a href="../profile/logout" class="form-btn">Logout</a>
+                    <a href="../../profile/index" class="form-btn">Profile</a>
+                    <a href="../../profile/logout" class="form-btn">Logout</a>
                 </div>
 
             <?php }  ?>
