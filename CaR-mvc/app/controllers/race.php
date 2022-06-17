@@ -31,13 +31,19 @@ class Race extends Controller
         $this->view('race/connected-race', ["user" => $user]);
     }
 
-    public function race()
+    public function race($type = '')
     {
 
         $user = getLoggedInUser();
         $felines = getAllContenstants();
 
-        $this->view('race/race', ["user" => $user, "felines" => $felines]);
+        $filtered = array();
+        foreach ($felines as $feline) {
+            if ($feline->type == $type)
+                $filtered[] =  $feline;
+        }
+
+        $this->view('race/race', ["user" => $user, "felines" => $filtered,  "type" => $type]);
     }
 
     public function live_races()
@@ -49,10 +55,10 @@ class Race extends Controller
         $past_races = getPastRaces();
 
         foreach ($past_races as $race) {
-            if(isFinished($race) == false)
+            if (isFinished($race) == false)
                 racePositions($race);
         }
-     
+
         //echo "---current---";
         $current_races = getCurrentRaces();
 
@@ -79,13 +85,16 @@ class Race extends Controller
         $felines = getAllContenstants();
 
 
-        foreach ($current_races as $race) {
-            foreach ($felines as $feline) {
-                if ($feline->comp_name == $race->name) {
-                    $data_csv[] = array($race->name, $race->start, $race->finish, $feline->name);
+        if ($current_races != null) {
+            foreach ($current_races as $race) {
+                foreach ($felines as $feline) {
+                    if ($feline->comp_name == $race->name) {
+                        $data_csv[] = array($race->name, $race->start, $race->finish, $feline->name);
+                    }
                 }
             }
         }
+
 
         $filename = '../public/export/schedule.csv';
 
@@ -175,7 +184,9 @@ class Race extends Controller
             echo "===" . $_POST["cota"] . "===";
 
             $user = getLoggedInUser();
+
             manageCredit(-1*$_POST["betting-sum"]);
+
             echo $user->username;
             addToBetHistory($_POST["betting-sum"], $_POST["id_bet"], $_POST["cota"], $user->username);
         }

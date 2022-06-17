@@ -29,11 +29,11 @@
 
 
         <nav class="top-menu">
-            <a href="../race/index"> Cat </a>
-            <a href="race.html"> Tiger </a>
-            <a href="race.html"> Puma </a>
-            <a href="race.html"> Cheetah </a>
-            <a href="race.html"> Jaguar </a>
+            <a href="../race/race/cat"> Cat </a>
+            <a href="../race/race/tiger"> Tiger </a>
+            <a href="../race/race/puma"> Puma </a>
+            <a href="../race/race/cheetah"> Cheetah </a>
+            <a href="../race/race/jaguar"> Jaguar </a>
         </nav>
     </header>
 

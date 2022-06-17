@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/race-style.css">
-    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../../css/race-style.css">
+    <link rel="stylesheet" href="../../css/header.css">
 
     <title>Cat Race</title>
 </head>
@@ -16,21 +16,31 @@
     <header>
         <div class="header-top">
             <div class="logo">
-                <img src="../images/logo.png" alt="logo">
+                <img src="../../images/logo.png" alt="logo">
                 <h3>Cat Race</h3>
             </div>
 
-            <button class="form-btn" onclick="openForm()">
-                Login</button>
+            <?php if ($data["user"] == null) { ?>
+                <button class="form-btn" onclick="openForm()">
+                    Login</button>
+            <?php } else if ($data["user"]->username != null) { ?>
+                <div>
+                    <a href="../profile/index" class="form-btn">Profile</a>
+                    <a href="../profile/logout" class="form-btn">Logout</a>
+                </div>
+
+            <?php }  ?>
+
+
         </div>
 
 
         <nav class="top-menu">
-            <a href="../race/index"> Cat </a>
-            <a href="../race/index"> Tiger </a>
-            <a href="../race/index"> Puma </a>
-            <a href="../race/index"> Cheetah </a>
-            <a href="../race/index"> Jaguar </a>
+            <a href="../../race/race/cat"> Cat </a>
+            <a href="../../race/race/tiger"> Tiger </a>
+            <a href="../../race/race/puma"> Puma </a>
+            <a href="../../race/race/cheetah"> Cheetah </a>
+            <a href="../../race/race/jaguar"> Jaguar </a>
         </nav>
     </header>
 
@@ -45,8 +55,8 @@
                 <!-- </div> -->
                 <div class="schedule">
                     <h3>Schedule </h3>
-                    <a href="../race/schedule">Schedule</a> <br>
-                    <a href="../race/live_races">Races</a> <br>
+                    <a href="../../race/schedule">Schedule</a> <br>
+                    <a href="../../race/live_races">Races</a> <br>
 
                 </div>
             </div>
@@ -69,7 +79,7 @@
                                     // is in this competition 
                         ?>
                     <tr>
-                        <td><a href="../cat/profile/<?php echo $feline->name ?> "> <?php echo $feline->name; ?> </a> </td>
+                        <td><a href="../../cat/profile/<?php echo $feline->name ?> "> <?php echo $feline->name; ?> </a> </td>
                         <td> <?php echo $feline->type; ?> </td>
                         <td> <?php echo $feline->size; ?> </td>
                         <td> <?php echo $feline->breed; ?> </td>
@@ -119,7 +129,7 @@
 
 
     <div class="form-popup" id="formPopup">
-        <form method="POST" action="../race/login" class="form-container" id="loginContainer">
+        <form method="POST" action="../../race/login" class="form-container" id="loginContainer">
             <h2>Login</h2>
 
             <label for="username"><b>Username</b></label>
@@ -139,7 +149,7 @@
             <button type="button" class="btn" onclick="closeForm()">Close</button>
         </form>
 
-        <form method="POST" action="../race/register" class="form-container" id="registerContainer">
+        <form method="POST" action="../../race/register" class="form-container" id="registerContainer">
             <h2>Sign Up</h2>
 
             <label for="email"><b>Email</b></label>
@@ -165,7 +175,7 @@
     </div>
 
 
-    <script src="../js/form-script.js"> </script>
+    <script src="../../js/form-script.js"> </script>
 
     <script>
         function placeBet() {

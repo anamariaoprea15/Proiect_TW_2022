@@ -19,25 +19,25 @@
                 <img src="../images/logo.png" alt="logo">
                 <h3>Cat Race</h3>
             </div>
-           
+
             <?php if ($data["user"] == null) { ?>
                 <button class="form-btn" onclick="openForm()">
                     Login</button>
-            <?php } else if($data["user"]->username != null) { ?>
+            <?php } else if ($data["user"]->username != null) { ?>
                 <div>
                     <a href="../profile/index" class="form-btn">Profile</a>
                     <a href="../profile/logout" class="form-btn">Logout</a>
                 </div>
-               
+
             <?php }  ?>
 
         </div>
         <nav class="top-menu">
-            <a href="race.html"> Cat </a>
-            <a href="race.html"> Tiger </a>
-            <a href="race.html"> Puma </a>
-            <a href="race.html"> Cheetah </a>
-            <a href="race.html"> Jaguar </a>
+            <a href="../race/race/cat"> Cat </a>
+            <a href="../race/race/tiger"> Tiger </a>
+            <a href="../race/race/puma"> Puma </a>
+            <a href="../race/race/cheetah"> Cheetah </a>
+            <a href="../race/race/jaguar"> Jaguar </a>
         </nav>
     </header>
 
@@ -59,7 +59,7 @@
             </div>
             <div class="right">
                 <p> Get the report about our schedule! </p>
-               
+
                 <a href="../export/schedule.csv" class="btn" download="schedule.csv">Download CSV</a>
                 <a href="../race/generateHTML" class="btn" download="schedule.html">Download HTML</a>
                 <a href="../export/mark.md" class="btn" download="markdown.md">Download Markdown</a>
