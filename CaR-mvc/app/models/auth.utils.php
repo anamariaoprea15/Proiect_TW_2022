@@ -49,7 +49,7 @@ function manageCredit($credit)
 {
     global $conn;
     $user = getLoggedInUser();
-    $updCredit = getCredit() + $credit;
+    $updCredit = getCredit($user->username) + $credit;
 
     $sql = "UPDATE users SET credit=? WHERE username like ?";
     $stmt = $conn->prepare($sql);
@@ -57,12 +57,11 @@ function manageCredit($credit)
     $stmt->execute();
     $stmt->close();
 }
-function getCredit()
+function getCredit($username)
 {
-    $user = getLoggedInUser();
     global $conn;
     $queryStmt = $conn->prepare('Select * from users where username = ?');
-    $queryStmt->bind_param('s', $user->username); //s= 1 string
+    $queryStmt->bind_param('s', $username); //s= 1 string
 
     $queryStmt->execute();
     $results = $queryStmt->get_result();

@@ -313,7 +313,7 @@ function updateWinners($winner, $race_name){
  
      if ($results->num_rows > 0) {
          $row = $results->fetch_assoc();
-         addCredit($row["username"], $row["cota"], $["bet_sum"]);
+         addCredit($row["username"], $row["cota"], $row["bet_sum"]);
      }
 }
 
