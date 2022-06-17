@@ -114,14 +114,17 @@
             <h2>Add feline to competition</h2>
 
             <form method="POST" action="../profile/add_feline">
+
+                <p>Name suggestions: <span id="txtHint"></span></p>
                 <div class="row">
                     <div class="left">
                         <label for="name2">Name</label>
                     </div>
                     <div class="right">
-                        <input type="text" id="name2" name="name2" placeholder="Feline's name.." required>
+                        <input type="text" id="name2" name="name2" placeholder="Feline's name.." onkeyup="showHint(this.value)" required>
                     </div>
                 </div>
+
                 <div class="row">
                     <div class="left">
                         <label for="type2">Type</label>
@@ -177,34 +180,47 @@
 
 
     <script>
-
-        document.getElementById('type').addEventListener('change', function () {
+        document.getElementById('type').addEventListener('change', function() {
             var type = this.value;
 
             if (type == "cat") {
                 document.getElementById('showCat').style.display = "block";
-            }
-            else { document.getElementById('showCat').style.display = "none";
+            } else {
+                document.getElementById('showCat').style.display = "none";
             }
 
         });
 
 
-        document.getElementById('type2').addEventListener('change', function () {
+        document.getElementById('type2').addEventListener('change', function() {
             var type = this.value;
 
             if (type == "cat") {
                 document.getElementById('showSize').style.display = "block";
                 document.getElementById('showBreed').style.display = "block";
-            }
-            else {
+            } else {
                 document.getElementById('showSize').style.display = "none";
                 document.getElementById('showBreed').style.display = "none";
                 document.getElementById("breed").value = null;
             }
 
         });
+    </script>
 
+    <script>
+        function showHint(str) {
+            if (str.length == 0) {
+                document.getElementById("txtHint").innerHTML = "";
+                return;
+            } else {
+                const xmlhttp = new XMLHttpRequest();
+                xmlhttp.onload = function() {
+                    document.getElementById("txtHint").innerHTML = this.responseText;
+                }
+                xmlhttp.open("GET", "../export/names_recommended.php?q=" + str);
+                xmlhttp.send();
+            }
+        }
     </script>
 </body>
 
