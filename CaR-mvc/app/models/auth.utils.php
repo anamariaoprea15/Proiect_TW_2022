@@ -75,8 +75,8 @@ function addUser($username, $email, $password)
 
     //insert user in baza de date
     global $conn;
-    $queryStmt = $conn->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?, ?)");
-    $queryStmt->bind_param('sssi', $username, $email, $password, 10000); //sssi= 3 stringuri si int
+    $queryStmt = $conn->prepare("INSERT INTO users (username, email, password, credit) VALUES (?, ?, ?, 10000)");
+    $queryStmt->bind_param('sss', $username, $email, $password); //sssi= 3 stringuri si int
     $queryStmt->execute();
     $queryStmt->close();
 }

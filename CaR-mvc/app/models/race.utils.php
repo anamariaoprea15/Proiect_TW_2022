@@ -312,9 +312,14 @@ function updateWinners($winner, $race_name){
      $queryStmt->close();
  
      if ($results->num_rows > 0) {
-         $row = $results->fetch_assoc();
-         addCredit($row["username"], $row["cota"], $row["bet_sum"]);
-     }
+        $rows = resultToArray($results);
+        // var_dump($rows); // Array of rows
+        foreach ($rows as $row) {
+            addCredit($row["username"], $row["cota"], $row["bet_sum"]);
+        }
+        $results->free();
+    }
+    
 }
 
 function racePositions($race)
