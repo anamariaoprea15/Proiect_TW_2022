@@ -41,18 +41,43 @@ function getUser($username, $password)
     if ($results->num_rows == 1) {
         $row = $results->fetch_assoc();
         //echo $row["username"] . ' ' . $row["password"];
-        return new User($row["id"], $row["username"], $row["email"]);
+        return new User($row["id"], $row["username"], $row["email"], $row["credit"]);
     }
     return null;
 }
+function manageCredit($credit)
+{
+    global $conn;
+    $user = getLoggedInUser();
+    $updCredit = getCredit() + $credit;
 
+    $sql = "UPDATE users SET credit=? WHERE username like ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("is", $updCredit, $user->username);
+    $stmt->execute();
+    $stmt->close();
+}
+function getCredit()
+{
+    $user = getLoggedInUser();
+    global $conn;
+    $queryStmt = $conn->prepare('Select * from users where username = ?');
+    $queryStmt->bind_param('s', $user->username); //s= 1 string
+
+    $queryStmt->execute();
+    $results = $queryStmt->get_result();
+    $queryStmt->close();
+    $row = $results->fetch_assoc();
+    echo $row["credit"];
+    return $row["credit"];
+}
 function addUser($username, $email, $password)
 {
 
     //insert user in baza de date
     global $conn;
-    $queryStmt = $conn->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
-    $queryStmt->bind_param('sss', $username, $email, $password); //sss= 3 stringuri
+    $queryStmt = $conn->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?, ?)");
+    $queryStmt->bind_param('sssi', $username, $email, $password, 10000); //sssi= 3 stringuri si int
     $queryStmt->execute();
     $queryStmt->close();
 }
@@ -74,18 +99,18 @@ function login($username, $password)
 
 
 
-function updatePassword($oldPassword, $newPassword, $user){
+function updatePassword($oldPassword, $newPassword, $user)
+{
     global $conn;
-    $sql = 'UPDATE users SET password = ' . '"'. md5($newPassword) . '"' . ' WHERE id = ' . $user->id . ' AND password LIKE ' . '"'. md5($oldPassword) .'"';
-   
+    $sql = 'UPDATE users SET password = ' . '"' . md5($newPassword) . '"' . ' WHERE id = ' . $user->id . ' AND password LIKE ' . '"' . md5($oldPassword) . '"';
+
     echo $sql;
 
     if ($conn->query($sql) === TRUE) {
         //   echo "Record updated successfully";
-       } else {
-           echo "Error updating record: " . $conn->error;
-       }
+    } else {
+        echo "Error updating record: " . $conn->error;
+    }
 
-       $conn->close();
-
+    $conn->close();
 }

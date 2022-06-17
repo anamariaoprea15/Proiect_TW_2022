@@ -175,7 +175,7 @@ class Race extends Controller
             echo "===" . $_POST["cota"] . "===";
 
             $user = getLoggedInUser();
-
+            manageCredit(-1*$_POST["betting-sum"]);
             echo $user->username;
             addToBetHistory($_POST["betting-sum"], $_POST["id_bet"], $_POST["cota"], $user->username);
         }

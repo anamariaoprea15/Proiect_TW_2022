@@ -24,7 +24,7 @@
                 <a href="../profile/index" class="form-btn">Profile</a>
                 <a href="../profile/logout" class="form-btn">Logout</a>
             </div>
-           
+
         </div>
 
 
@@ -41,11 +41,13 @@
         <div class="container">
             <div class="left">
                 <div class="sidenav">
-                <?php
+                    <?php
 
                     echo  "<h3>" . $data["user"]->username . " </h3>";
                     ?>
-                    <h3>Sold 1500$</h3><br>
+                    <?php
+                    echo  "<h3>" . $data["user"]->credit . " </h3>";
+                    ?><br>
                     <a href="../profile/user_dashUpc">Upcoming Bets</a>
                     <a href="../profile/user_dashHistory">History</a>
                     <button class="form-btn1" onclick="openForm()">
@@ -60,15 +62,15 @@
                 <table>
                     <thead>
                         <tr>
-                        <th>Feline name</th>
-                        <th>Competition</th>
-                        <th>Date</th>
-                        <th>Cote</th>
-                        <th>Money</th>
+                            <th>Feline name</th>
+                            <th>Competition</th>
+                            <th>Date</th>
+                            <th>Cote</th>
+                            <th>Money</th>
                         </tr>
                     </thead>
                     <tbody>
-                    <?php
+                        <?php
                         $servername = "localhost";
                         $username = "root";
                         $password = "";

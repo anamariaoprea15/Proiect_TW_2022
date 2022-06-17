@@ -45,7 +45,9 @@
 
                     echo  "<h3>" . $data["user"]->username . " </h3>";
                     ?>
-                    <h3>Sold 1500$</h3><br>
+                    <?php
+                    echo  "<h3>" . $data["user"]->credit . " </h3>";
+                    ?><br>
 
                     <a href="../profile/user_dashUpc">Upcoming Bets</a>
                     <a href="../profile/user_dashHistory">History</a>
@@ -99,7 +101,7 @@
                             $row_f = $result_f->fetch_assoc();
 
                             $earning = $row["cota"] * $row["bet_sum"];
-                            
+
                             if ($row_f["rank"] != 1) {
                                 $earning = 0;
                             }
