@@ -23,7 +23,7 @@ include_once  "../app/models/User.php";
 
 function getUser($username, $password)
 {
-   
+
     //query baza de date
     global $conn;
 
@@ -37,6 +37,27 @@ function getUser($username, $password)
     if ($results->num_rows == 1) {
         $row = $results->fetch_assoc();
         //echo $row["username"] . ' ' . $row["password"];
+        return new User($row["id"], $row["username"], $row["email"], $row["credit"]);
+    }
+    return null;
+}
+
+
+function existsUser($username, $email)
+{
+    //query baza de date
+    global $conn;
+
+    $queryStmt = $conn->prepare('Select * from users where username = ? and email = ?');
+    $queryStmt->bind_param('ss', $username, $email); //ss= 2 stringuri
+
+    $queryStmt->execute();
+    $results = $queryStmt->get_result();
+    $queryStmt->close();
+
+    if ($results->num_rows == 1) {
+        $row = $results->fetch_assoc();
+        //echo $row["username"] . ' ' . $row["email"];
         return new User($row["id"], $row["username"], $row["email"], $row["credit"]);
     }
     return null;
