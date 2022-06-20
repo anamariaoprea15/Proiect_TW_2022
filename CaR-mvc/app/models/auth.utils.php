@@ -23,11 +23,7 @@ include_once  "../app/models/User.php";
 
 function getUser($username, $password)
 {
-    /* 
-       if($username === "Ana" && $password === md5("aremere")) {
-            return new User($username);
-        }*/
-
+   
     //query baza de date
     global $conn;
 

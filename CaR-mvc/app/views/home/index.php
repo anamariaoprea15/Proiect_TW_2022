@@ -16,7 +16,9 @@
         <div class="header-top">
             <div class="logo">
                 <img src="../images/logo.png" alt="logo">
-                <a class="btn" href="../race/live_races"><h3>Cat Race</h3></a>
+                <a class="btn" href="../race/live_races">
+                    <h3>Cat Race</h3>
+                </a>
                 <!-- <a class="btn" href="../public/home"><h3>Cat Race</h3></a> -->
 
             </div>
@@ -65,12 +67,15 @@
         <form method="POST" action="../home/register" class="form-container" id="registerContainer">
             <h2>Sign Up</h2>
 
+            <div id="demo">
+                <p> </p>
+            </div>
             <label for="email"><b>Email</b></label>
-            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required onkeyup="checkEmail(this.value);">
 
 
             <label for="username"><b>Username</b></label>
-            <input type="text" id="username" name="username" placeholder="Enter your username" required>
+            <input type="text" id="username" name="username" placeholder="Enter your username" required onkeyup="checkUsername(this.value);">
 
             <label for="password"><b>Password</b></label>
             <input type="password" id="password" name="password" placeholder="Enter your password" required>
@@ -88,6 +93,9 @@
     </div>
 
     <script src="../js/form-script.js"> </script>
+    <script src="../js/check-user.js"> </script>
+
+
 </body>
 
 </html>

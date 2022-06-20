@@ -27,11 +27,13 @@ class Home extends Controller{
         $username = $_POST["username"];
         $password = md5($_POST["password"]);
 
+        // check if user is in database
         $user = getUser($username, $password);
 
 
         if(!$user) {
-            // echo "Missing account!";
+           //  echo "Missing account!";
+           $this->view('home/403', []);
            // $this -> view('errors/wrong-credentials', []);
         } else {
             //login din auth-utils
