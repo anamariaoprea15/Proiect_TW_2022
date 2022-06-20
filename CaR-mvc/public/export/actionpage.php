@@ -24,6 +24,14 @@ $name_error = "";
 $email_error = "";
 $username = "";
 $email = "";
+
+$race_error = "";
+$race = "";
+
+
+$feline_error = "";
+$feline = "";
+
 //If username is set
 if (isset($_GET['username'])) {
     $username = $_GET['username'];
@@ -52,4 +60,35 @@ if (isset($_GET['email']) && $_GET['email'] != "") {
         echo " " . $email_error;
     }
 }
+
+
+if (isset($_GET['race'])) {
+    $race = $_GET['race'];
+
+    $sql = "SELECT * FROM competitions WHERE name='$race'";
+
+    $res = mysqli_query($conn, $sql);
+    //Check number of rows returned from database. 
+    //If greater than zero means that competition is already submitted/saved in mysql database.
+    if (mysqli_num_rows($res) > 0) {
+        $race_error = "Competition name " . $race . " is already taken";
+        echo " " . $race_error;
+    }
+}
+
+
+if (isset($_GET['feline'])) {
+    $feline = $_GET['feline'];
+
+    $sql = "SELECT * FROM felines WHERE name='$feline'";
+
+    $res = mysqli_query($conn, $sql);
+    //Check number of rows returned from database. 
+    //If greater than zero means that feline is already submitted/saved in mysql database.
+    if (mysqli_num_rows($res) > 0) {
+        $feline_error = "Feline name " . $race . " is already taken";
+        echo " " . $feline_error;
+    }
+}
+
 ?>
