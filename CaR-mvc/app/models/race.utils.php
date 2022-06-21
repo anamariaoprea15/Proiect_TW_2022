@@ -253,11 +253,14 @@ function generateICalendar()
 
 
     $future_races = getFutureRaces();
-    foreach ($future_races as $race) {
+    if($future_races != null){
+        foreach ($future_races as $race) {
 
-        $event = new ICS($race->start, $race->finish, $race->name);
-        $event->save();
+            $event = new ICS($race->start, $race->finish, $race->name);
+            $event->save();
+        }
     }
+   
 }
 
 function updatePosition($feline_name, $comp_name, $rank)

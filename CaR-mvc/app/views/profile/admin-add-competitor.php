@@ -53,9 +53,10 @@
                         <label for="name">Competition Name</label>
                     </div>
                     <div class="right">
-                        <input type="text" id="name" name="name" placeholder="Competition's name.." required>
+                        <input type="text" id="name" name="name" placeholder="Competition's name.." required onkeyup="checkRace(this.value);">
                     </div>
                 </div>
+             
                 <div class="row">
                     <div class="left">
                         <label for="type">Type</label>
@@ -105,6 +106,10 @@
                 <div class="row">
                     <input type="submit" value="Submit">
                 </div>
+
+                <div id="demo">
+                    <p> </p>
+                </div>
             </form>
         </div>
 
@@ -121,7 +126,7 @@
                         <label for="name2">Name</label>
                     </div>
                     <div class="right">
-                        <input type="text" id="name2" name="name2" placeholder="Feline's name.." onkeyup="showHint(this.value)" required>
+                        <input type="text" id="name2" name="name2" placeholder="Feline's name.."  onkeyup="checkFeline(this.value); showHint(this.value)" required>
                     </div>
                 </div>
 
@@ -174,6 +179,10 @@
                 <div class="row">
                     <input type="submit" value="Submit">
                 </div>
+
+                <div id="demo2">
+                    <p> </p>
+                </div>
             </form>
         </div>
     </main>
@@ -222,6 +231,9 @@
             }
         }
     </script>
+
+    <script src="../js/check-races.js"> </script>
+
 </body>
 
 

@@ -16,7 +16,7 @@ class Profile extends Controller
                 //$this->view('profile/user_dashUpc', ["user" => $user]);     
             }
         } else {
-            $this->view('home/403', []);
+            $this->view('home/index', []);
         }
     }
 
@@ -64,12 +64,12 @@ class Profile extends Controller
 
     public function changePassword()
     {
-
         $user = getLoggedInUser();
-        if (isset($_POST['old_password']) && isset($_POST['new_password'])) {
-            updatePassword($_POST['old_password'], $_POST['new_password'], $user);
+        if (isset($_POST["old_password"]) && isset($_POST["new_password"])) {
+            updatePassword($_POST["old_password"], $_POST["new_password"], $user);
             header("Location: ../profile/index");
         }
+
     }
 
 
@@ -106,4 +106,6 @@ class Profile extends Controller
         addFeline($name, $type, $size, $breed, $comp_name);
         header("Location: ../profile/index");
     }
+
+  
 }

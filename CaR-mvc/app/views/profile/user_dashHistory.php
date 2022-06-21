@@ -127,15 +127,15 @@
             <h2>Change Password</h2>
 
             <label for="old_password"><b>Old Password</b></label>
-            <input type="password" id="old_password" name="password" placeholder="Enter your old password" required>
+            <input type="password" id="old_password" name="old_password" placeholder="Enter your old password" required>
 
             <label for="new_password"><b>New Password</b></label>
-            <input type="password" id="new_password" name="password" placeholder="Enter your new password" required>
+            <input type="password" id="new_password" name="new_password" placeholder="Enter your new password" required>
             <button type="submit" class="btn">Change</button>
             <button type="button" class="btn" onclick="closeForm()">Close</button>
         </form>
     </div>
-    <script src="form-script.js"> </script>
+    <script src="../js/form-script.js"> </script>
 
 </body>
 

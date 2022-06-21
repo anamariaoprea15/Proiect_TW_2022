@@ -84,11 +84,11 @@
         <div class="container">
             <div class="profile">
                 <div class="pfp">
-                    <img src="https://s.iw.ro/gateway/g/ZmlsZVNvdXJjZT1odHRwJTNBJTJGJTJG/c3RvcmFnZWRpZ2lhbmltYWx3b3JsZC5y/Y3MtcmRzLnJvJTJGc3RvcmFnZSUyRjIw/MTklMkYwNSUyRjIxJTJGMTA3NTcyNl8x/MDc1NzI2X29jZWxvdC5qcGcmdz03ODAm/aD02MDAmemM9MSZoYXNoPWNlNGYxZDk0MDY2MTFiZmJhNWJlMjc0ZjlkYzFlZDVm.thumb.jpg" alt="pfp">
+                    <img src="../../images/prof-pic.png" alt="pfp">
                 </div>
                 <div class="info">
                     <h3>Name: <?php echo $data["cat_data"][0]->name; ?></h3>
-                    <p>Size: <?php echo $data["cat_data"][0]->size; ?> </p>
+                    <p>Type: <?php echo $data["cat_data"][0]->type; ?> </p>
                     <p>Breed: <?php echo $data["cat_data"][0]->breed; ?></p>
                     <p>Avg. Ranking: <?php echo $data["avgRank"]; ?></p>
                     <p>Number of podiums: <?php echo $data["noPodiums"]; ?></p>

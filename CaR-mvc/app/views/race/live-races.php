@@ -17,7 +17,9 @@
         <div class="header-top">
             <div class="logo">
                 <img src="../images/logo.png" alt="logo">
-                <a class="btn" href="../public/home"><h3>Cat Race</h3></a>
+                <a class="btn" href="../public/home">
+                    <h3>Cat Race</h3>
+                </a>
             </div>
 
             <?php if ($data["user"] == null) { ?>
@@ -70,7 +72,10 @@
                     $current_races = $data["current_races"];
                     if ($current_races != null) {
                         foreach ($current_races as $race) {
-                            echo "<p>" . $race->name . " - " . $race->type . " - " . $race->size . " </p>";
+                            if ($race->type == "cat") {
+                                echo "<p>" . $race->name . " - " . $race->type . " - " . $race->size . " </p>";
+                            } else echo "<p>" . $race->name . " - " . $race->type . "</p>";
+
                             echo "<p>  [" . $race->start . "] -  [" . $race->finish . "] </p>";
 
                     ?>
@@ -128,7 +133,10 @@
                     $past_races = $data["past_races"];
                     if ($past_races != null) {
                         foreach ($past_races as $race) {
-                            echo "<p>" . $race->name . " - " . $race->type . " - " . $race->size . " </p>";
+                            if ($race->type == "cat") {
+                                echo "<p>" . $race->name . " - " . $race->type . " - " . $race->size . " </p>";
+                            } else echo "<p>" . $race->name . " - " . $race->type . "</p>";
+
                             echo "<p>  [" . $race->start . "] -  [" . $race->finish . "] </p>";
 
                     ?>
@@ -174,7 +182,10 @@
                     $future_races = $data["future_races"];
                     if ($future_races != null) {
                         foreach ($future_races as $race) {
-                            echo "<p>" . $race->name . " - " . $race->type . " - " . $race->size . " </p>";
+                            if ($race->type == "cat") {
+                                echo "<p>" . $race->name . " - " . $race->type . " - " . $race->size . " </p>";
+                            } else echo "<p>" . $race->name . " - " . $race->type . "</p>";
+
                             echo "<p>  [" . $race->start . "] -  [" . $race->finish . "] </p>";
 
                     ?>
